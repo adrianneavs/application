@@ -10,7 +10,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 + * @version 4.0
 + * @since Apr 8, 2015
 + */
-class Product_sample extends CI_Controller {
+class Products_sample extends CI_Controller {
 
     public function __construct()
    {

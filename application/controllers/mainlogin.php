@@ -13,9 +13,22 @@
  * @author haha
  */
 class Mainlogin extends CI_Controller {
- 
+ public function __construct()
+   {
+        parent::__construct();
+    }
+
     public function index (){
         $this->loginform();
+        $view_data = array();
+        //load  m_products model
+        $this->load->model('m_products');
+
+        //past products data to view
+        $view_data['products'] = $this->m_products->get_products();
+        
+        //call view
+        $this->load->view('v_products', $view_data);
         //something with () in the end is a function
 }
  public function loginform (){

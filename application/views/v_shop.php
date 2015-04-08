@@ -57,15 +57,11 @@ if(isset($_SESSION["products"]))
 {
     $total = 0;
     echo '<ol>';
-    foreach ($_SESSION["products"] as $cart_itm)
-    {
-        echo '<li class="cart-itm">';
-        echo '<span class="remove-itm"><a href="cart_update.php?removep='.$cart_itm["code"].'&return_url='.$current_url.'">&times;</a></span>';
-        echo '<h3>'.$cart_itm["name"].'</h3>';
-        echo '<div class="p-code">P code : '.$cart_itm["code"].'</div>';
-        echo '<div class="p-qty">Qty : '.$cart_itm["qty"].'</div>';
-        echo '<div class="p-price">Price :'.$currency.$cart_itm["price"].'</div>';
-        echo '</li>';
+    foreach ($products as $product) {
+         echo $product->product_name ;
+         echo $product->product_desc ;
+         echo $product->product_code ;
+                
         $subtotal = ($cart_itm["price"]*$cart_itm["qty"]);
         $total = ($total + $subtotal);
     }
