@@ -3,6 +3,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 /**
+<<<<<<< HEAD
 + * @copyright Copyright (c) 2015 Kreydle Sdn Bhd
 + * Description of account
 + *
@@ -10,6 +11,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 + * @version 4.0
 + * @since Apr 8, 2015
 + */
+
 class M_products extends CI_Model {
 
     public function __construct()
@@ -18,6 +20,7 @@ class M_products extends CI_Model {
     }
 
     /**
+<<<<<<< HEAD
 +     * get single product by id
 +     * @param type $product_id
 +     * @return type
@@ -29,6 +32,7 @@ class M_products extends CI_Model {
     }
 
     /**
+<<<<<<< HEAD
 +     * get single product by product code
 +     * @param type $product_code
 +     * @return type
@@ -41,11 +45,11 @@ class M_products extends CI_Model {
 
     /**
      * get all products
+<<<<<<< HEAD
 +     * @return type
 +     */
     public function get_products()
     {
         return $this->db->get('products')->result();
     }
-
 }
