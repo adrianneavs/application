@@ -3,12 +3,6 @@ class Cart_update extends CI_Controller{
 public function add2cart(){
 $currency = '$'; //Currency sumbol or code
 
-$db_username = 'root';
-$db_password = '';
-$db_name = 'sample_db';
-$db_host = 'localhost';
-$mysqli = new mysqli($db_host, $db_username, $db_password,$db_name);
-
 //empty cart by distroying current session
 if(isset($_GET["emptycart"]) && $_GET["emptycart"]==1)
 {
@@ -30,7 +24,7 @@ if(isset($_POST["type"]) && $_POST["type"]=='add')
 	}
 
 	//MySqli query - get details of item from db using product code
-	$results = $mysqli->query("SELECT product_name,price FROM products WHERE product_code='$product_code' LIMIT 1");
+//	$results = $mysqli->query("SELECT product_name,price FROM products WHERE product_code='$product_code' LIMIT 1");
 	$obj = $results->fetch_object();
 	
 	if ($results) { //we have the product info 
