@@ -85,15 +85,11 @@ if(isset($_GET["emptycart"]) && $_GET["emptycart"]==1)
 				//found user item in array list, and increased the quantity
 				$_SESSION["products"] = $product;
 			}
-			
 		}else{
 			//create a new session var if does not exist
 			$_SESSION["products"] = $new_product;
 		}
-		
-	}
-	
-	//redirect back to original page
+	}//redirect back to original page
 	header('Location:'.$return_url);
 }
 if(isset($_GET["removep"]) && isset($_GET["return_url"]) && isset($_SESSION["products"]))
