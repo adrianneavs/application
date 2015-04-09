@@ -27,16 +27,14 @@ class Mainlogin extends CI_Controller {
         //something with () in the end is a function
 }
 
-public function indexproduct(){
-    $view_data = array();
-        //load  m_products model
-        $this->load->model('m_products');
+public function cart(){
+    parent::Controller();
+    $this->load-model('m_products');
+}
 
-        //past products data to view
-        $view_data['products'] = $this->m_products->get_products();
-        
-        //call view
-        $this->load->view('v_products', $view_data);
+public function indexproduct(){
+    $data['products'] = $this->load->model('m_products')->update_prod();
+    print_r($data['products']);
 }
  public function loginform (){
         $this->load->view('v_login');
@@ -55,6 +53,7 @@ public function order (){
 public function cart_update(){
     
 if (isset($_POST["type"]) && $_POST["type"]=='add'){
+
     $product_code = $this->input->post('product_code');
     $product_qty = $this->input->post('product_qty');
     $return_url = $this->input->post('return_url');

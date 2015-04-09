@@ -52,4 +52,9 @@ class M_products extends CI_Model {
     {
         return $this->db->get('products')->result();
     }
+    
+    public function update_prod(){
+        $query = $this->db->get('products');
+        return $query->result();
+    }
 }
