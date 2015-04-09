@@ -69,11 +69,10 @@ $products = $result->result();
 
 if ($result) { 
     $new_product = 
-            array(
-                'name'=>$product_name, 
+ ['name'=>$product_name, 
                 'code'=>$product_code, 
                 'price'=>$price, 
-                'qty'=>$product_qty);
+                'qty'=>$product_qty];
 
     if (isset($this->session->products)){
  $found = false;

@@ -87,11 +87,11 @@ $products = $result->result();
         <h2>Cart</h2>
         <?php
         
-if(isset($_SESSION["products"]))
+if(isset($this->session->products))
 {
     $total = 0;
     echo '<ol>';
-    foreach ($_SESSION["products"] as $cart_itm)
+    foreach ($this->session->products as $cart_itm)
     {
         echo '<li class="cart-itm">';
         echo '<span class="remove-itm"><a href="order"='.$cart_itm["code"].'&return_url='.$current_url.'">&times;</a></span>';
