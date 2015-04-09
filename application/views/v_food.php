@@ -51,19 +51,17 @@ $currency = '$'; //Currency sumbol or code
     <div class="products">
     <?php
     $currency = '$'; //Currency symbol or code
-       
 $this->db->select('*');
 $this->db->from('products');
 $result = $this->db->get();
 $products = $result->result();
-
-    //current URL of the Page. cart_update.php redirects back to this URL
-	$current_url = base64_encode($url="http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']);
+  
 	
         //fetch results set as object and output HTML
         foreach ($products as $product){
 			echo '<div class="product">'; 
-            echo '<form method="post" action="cart_update">';
+            echo form_open('/mainlogin/cart_update');
+            //echo '<form method="post" action="cart_update">';
             echo '<div class="product-thumb"><img src="D:/KREYDLEPROJ/ajenglocal/'.$product->product_img_name.'"></div>';
             echo '<div class="product-content"><h3>'.$product->product_name.'</h3>';
             echo '<div class="product-desc">'.$product->product_desc.'</div>';
@@ -75,10 +73,13 @@ $products = $result->result();
                         . '</select>';
 			echo '<button class="add_to_cart">Add To Cart</button>';
 			echo '</div></div>';
+            echo '<input type="hidden" name="product_name" value="'.$product->product_name.'" />';
+            echo '<input type="hidden" name="product_desc" value="'.$product->product_desc.'" />';
+            echo '<input type="hidden" name="price" value="'.$product->price.'" />';
             echo '<input type="hidden" name="product_code" value="'.$product->product_code.'" />';
             echo '<input type="hidden" name="type" value="add" />';
-			echo '<input type="hidden" name="return_url" value="'.$current_url.'" />';
-            echo '</form>';
+		echo form_close();	
+            //echo '</form>';
             echo '</div>';
         
     
@@ -86,17 +87,23 @@ $products = $result->result();
     ?>
         <h2>Cart</h2>
         <?php
-        
+
 if(isset($this->session->products))
 {
     $total = 0;
     echo '<ol>';
+$this->db->select('*');
+$this->db->from('products');
+$result = $this->db->get();
+$products = $result->result();
+
     foreach ($this->session->products as $cart_itm)
     {
+
         echo '<li class="cart-itm">';
-        echo '<span class="remove-itm"><a href="order"='.$cart_itm["code"].'&return_url='.$current_url.'">&times;</a></span>';
-        echo '<h3>'.$cart_itm["name"].'</h3>';
-        echo '<div class="p-code">P code : '.$cart_itm["code"].'</div>';
+        echo '<span class="remove-itm"><a href="order"='.$cart_itm["product_code"].'&return_url='.$current_url.'">&times;</a></span>';
+        echo '<h3>'.$cart_itm["product_name"].'</h3>';
+        echo '<div class="p-code">P code : '.$cart_itm["product_code"].'</div>';
         echo '<div class="p-qty">Qty : '.$cart_itm["qty"].'</div>';
         echo '<div class="p-price">Price :'.$currency.$cart_itm["price"].'</div>';
         echo '</li>';

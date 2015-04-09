@@ -55,13 +55,11 @@ public function order (){
 public function cart_update(){
     
 if (isset($_POST["type"]) && $_POST["type"]=='add'){
-    $product_code = filter_var($_POST["product_code"], FILTER_SANITIZE_STRING);
-    $product_qty = filter_var($_POST["product_qty"], FILTER_SANITIZE_NUMBER_INT);
-    $return_url = base64_decode($_POST["return_url"]);
+    $product_code = $this->input->post('product_code');
+    $product_qty = $this->input->post('product_qty');
+    $return_url = $this->input->post('return_url');
     $product_name = $this->input->post('product_name');
     $price = $this->input->post('price');
-    
-}
 $this->db->select('*');
 $this->db->from('products');
 $result = $this->db->get();
@@ -87,13 +85,15 @@ if ($result) {
      }
  }
  if($found=false){
-     $_SESSION["products"] = array_merge($product, $new_product);
+     $this->session->products = array_merge($product, $new_product);
  }else{
 //found user item in array list, and increased the quantity
-$_SESSION["products"] = $product;
+$this->session->products = $product;
 }
 }else{
-$_SESSION["products"] = $new_product;    
+$this->session->products = $new_product;    
+}
+    
 }
     $view_data = array();
         //load  m_products model
