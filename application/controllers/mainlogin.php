@@ -50,7 +50,42 @@ public function order (){
 }
 
 public function cart_update(){
-$view_data = array();
+    
+if (isset($_POST["type"]) && $_POST["type"]=='add'){
+    $product_code = ($_POST["product_code"]);
+    $product_qty = ($_POST["product_qty"]);
+    $return_url = ($_POST["return_url"]);
+}
+$this->db->select('*');
+$this->db->from('products');
+$result = $this->db->get();
+$products = $result->result();
+
+if ($result) { 
+    $new_product = array('name'=>$products->product_name, 'code'=>$product_code, 'price'=>$products->price);
+if (isset($_SEESION["products"])){
+ $found = false;
+ 
+ foreach ($_SESSION["products"] as $cart_itm)
+ {
+     if($cart_itm["code"] == $product_code){
+         $product[] = array('name'=>$cart_itm["name"], 'code'=>$cart_itm["code"],
+             'qty'=>$product_qty, 'price'=>$cart_itm["price"]);
+         $found = true;
+     } else {
+         $product[] = array('name'=>$cart_itm["name"], 'code'=>$cart_itm["code"], 'qty'=>$cart_itm["qty"], 'price'=>$cart_itm["price"]);
+     }
+ }
+ if($found=false){
+     $_SESSION["products"] = array_merge($product, $new_product);
+ }else{
+//found user item in array list, and increased the quantity
+$_SESSION["products"] = $product;
+}
+}else{
+$_SESSION["products"] = $new_product;    
+}
+    $view_data = array();
         //load  m_products model
         $this->load->model('m_products');
 
@@ -58,9 +93,11 @@ $view_data = array();
         $view_data['products'] = $this->m_products->get_products();
         
         //call view
-        $this->load->view('v_products', $view_data);
+        $this->load->view('v_food', $view_data);
     }
 
+
+}
 public function confirm(){
     if ($this->session->userdata('is_logged_in')){
         $this->load->view('v_confirm');
