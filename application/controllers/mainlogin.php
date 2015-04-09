@@ -58,8 +58,8 @@ if (isset($_POST["type"]) && $_POST["type"]=='add'){
     $product_code = filter_var($_POST["product_code"], FILTER_SANITIZE_STRING);
     $product_qty = filter_var($_POST["product_qty"], FILTER_SANITIZE_NUMBER_INT);
     $return_url = base64_decode($_POST["return_url"]);
-    $product_name = filter_var($_POST["product_name"], FILTER_SANITIZE_STRING);
-    $price = filter_var($_POST["price"], FILTER_SANITIZE_NUMBER_INT);
+    $product_name = $this->input->post('product_name');
+    $price = $this->input->post('price');
     
 }
 $this->db->select('*');
