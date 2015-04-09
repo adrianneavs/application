@@ -13,7 +13,10 @@
  * @author haha
  */
 class Mainlogin extends CI_Controller {
- public function __construct()
+
+    
+
+    public function __construct()
    {
         parent::__construct();
     }
@@ -52,9 +55,12 @@ public function order (){
 public function cart_update(){
     
 if (isset($_POST["type"]) && $_POST["type"]=='add'){
-    $product_code = ($_POST["product_code"]);
-    $product_qty = ($_POST["product_qty"]);
-    $return_url = ($_POST["return_url"]);
+    $product_code = filter_var($_POST["product_code"], FILTER_SANITIZE_STRING);
+    $product_qty = filter_var($_POST["product_qty"], FILTER_SANITIZE_NUMBER_INT);
+    $return_url = base64_decode($_POST["return_url"]);
+    $product_name = filter_var($_POST["product_name"], FILTER_SANITIZE_STRING);
+    $price = filter_var($_POST["price"], FILTER_SANITIZE_NUMBER_INT);
+    
 }
 $this->db->select('*');
 $this->db->from('products');
@@ -62,15 +68,20 @@ $result = $this->db->get();
 $products = $result->result();
 
 if ($result) { 
-    $new_product = array('name'=>$products->product_name, 'code'=>$product_code, 'price'=>$products->price);
-if (isset($_SEESION["products"])){
+    $new_product = 
+            array(
+                'name'=>$product_name, 
+                'code'=>$product_code, 
+                'price'=>$price, 
+                'qty'=>$product_qty);
+
+    if (isset($this->session->products)){
  $found = false;
  
- foreach ($_SESSION["products"] as $cart_itm)
+   foreach ($this->session->products as $cart_itm)
  {
      if($cart_itm["code"] == $product_code){
-         $product[] = array('name'=>$cart_itm["name"], 'code'=>$cart_itm["code"],
-             'qty'=>$product_qty, 'price'=>$cart_itm["price"]);
+         $product[] = array('name'=>$cart_itm["name"], 'code'=>$cart_itm["code"],'qty'=>$product_qty, 'price'=>$cart_itm["price"]);
          $found = true;
      } else {
          $product[] = array('name'=>$cart_itm["name"], 'code'=>$cart_itm["code"], 'qty'=>$cart_itm["qty"], 'price'=>$cart_itm["price"]);
