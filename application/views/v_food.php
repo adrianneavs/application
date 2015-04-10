@@ -78,7 +78,9 @@ and open the template in the editor.
             foreach ($cart as $cart_itm) {
                 $total = 0;
                 echo '<li class="cart-itm">';
-
+                echo form_open('/mainlogin/cart_update');
+                echo '<button name="addtocart">Add To Cart</button>';
+                //echo '<name="remove"><a href="cart_update".$cart_itm["code"]>&times;</a>';
                 echo '<h3>' . $cart_itm["name"] . '</h3>';
                 echo '<div class="p-code">P code : ' . $cart_itm["code"] . '</div>';
                 echo '<div class="p-qty">Qty : ' . $cart_itm["qty"] . '</div>';
@@ -86,10 +88,11 @@ and open the template in the editor.
                 echo '</li>';
                 $subtotal = ($cart_itm["price"] * $cart_itm["qty"]);
                 $total = ($total + $subtotal);
+                echo form_close();
             }
             echo '</ol>';
 
-            echo '<span class="check-out-txt"><strong>Total : ' . $currency . $total . '</strong> </br> <a href="view_cart.php">Check-out!</a></span>';
+            echo '<span class="check-out-txt"><strong>Total : ' . $currency . $total . '</strong> </br> <a href="checkout">Check-out!</a></span>';
             echo '</br>';
             echo '<span class="empty-cart"><a href="cart_update.php?emptycart=1&return_url="> Empty Cart</a></span>';
             ?>
