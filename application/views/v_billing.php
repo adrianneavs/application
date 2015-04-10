@@ -10,9 +10,12 @@ endif;
 <html>
     <head>
         <title>Codeigniter cart class</title>
-         <link href='http://fonts.googleapis.com/css?family=Raleway:500,600,700' rel='stylesheet' type='text/css'>
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>css/style.css"/>
-    </head>
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="<?php echo base_url('boots/css/bootstrap.min.css'); ?>">
+        <link rel="stylesheet" href="<?php echo base_url('boots/css/bootstrap-theme.min.css'); ?>">
+        <script src="<?php echo base_url('boots/js/bootstrap.min.js'); ?>"></script>    </head>
     <body>
         <div id="bill_info">
             

@@ -1,4 +1,11 @@
-<?php
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="<?php echo base_url('boots/css/bootstrap.min.css'); ?>">
+        <link rel="stylesheet" href="<?php echo base_url('boots/css/bootstrap-theme.min.css'); ?>">
+        <script src="<?php echo base_url('boots/js/bootstrap.min.js'); ?>"></script><?php
 echo '<h1>YOU DON`T HAVE TO ACCESS THIS PAGE</h1>';
 echo '<h1>PLEASE LOG IN FIRST</h1>';
 $this->load->view('v_login');
@@ -7,4 +14,7 @@ $this->load->view('v_login');
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+?>
+    </head>
+</html>
 

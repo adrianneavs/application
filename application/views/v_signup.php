@@ -9,35 +9,12 @@ and open the template in the editor.
         <meta charset="UTF-8">
         <title>Sign Up Page</title>
     <h1> Sign Up!! </h1>
-        <style type="text/css">
-            h1 {
-		color: #444;
-		background-color: transparent;
-		font-size: 19px;
-		font-weight: normal;
-		margin: 0 0 14px 0;
-		padding: 14px 15px 10px 15px;
-	}
-
-            body {
-		background-color: #add8e6;
-		margin: 40px;
-		font: 15px/20px Arial;
-		color: #4F5155;
-	}
-            #body{
-		margin: 0 15px 0 15px;
-	}
-        
-            signup_submit{
-            color: white;
-            border-radius: 4px;
-            text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
-            background: rgb(28, 184, 65);
-        }
-	</style>
-	
-    </head>
+                    <link rel="stylesheet" type="text/css" href="style.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="<?php echo base_url('boots/css/bootstrap.min.css'); ?>">
+        <link rel="stylesheet" href="<?php echo base_url('boots/css/bootstrap-theme.min.css'); ?>">
+        <script src="<?php echo base_url('boots/js/bootstrap.min.js'); ?>"></script></head>
     <body>
         <div id ="body">
         <?php
