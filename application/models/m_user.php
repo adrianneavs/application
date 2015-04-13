@@ -28,7 +28,7 @@ class M_user extends CI_Model {
         
   }
 
-  public function prosessignup($key){
+  public function prosessignup(){
       $data = array(
           'firstname' => $this->input->post('firstname'),
           'lastname' => $this->input->post('lastname'),

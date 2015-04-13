@@ -43,157 +43,6 @@ class Mainlogin extends CI_Controller {
         $this->load->view('v_login');
     }
 
-//
-//    public function order() {
-//        //$this->load->view('v_members');
-//        if ($this->session->userdata('is_logged_in')) {
-//            $this->load->view('v_food');
-//        } else {
-//            redirect('mainlogin/restricted');
-//        }
-//    }
-//
-//    public function cart_update() {
-//        if ($this->session->userdata('is_logged_in')) {
-////load  m_products model
-//            $this->load->model('m_products');
-//
-//            if (isset($_POST["addtocart"])) {
-//
-//                $product_id = $this->input->post('id');
-//                $product_qty = $this->input->post('product_qty');
-//                $product = $this->m_products->get_product($product_id); //
-//                //echo $product_id." ".$product_qty;
-//                //echo $product->product_desc;
-//                $cart_session = array();
-//                if ($this->session->userdata('cart') !== FALSE) {
-//                    $cart_session = $this->session->userdata('cart');
-//                }
-//                $cart_session[$product_id] = [
-//                    'name' => $product->product_name,
-//                    'code' => $product->product_code,
-//                    'price' => $product->price * $product_qty,
-//                    'qty' => $product_qty
-//                ];
-//                //print_r($cart_session);
-//                $this->session->set_userdata('cart', $cart_session);
-//
-////
-////            if (isset($this->session->products)) {
-////                $found = false;
-////
-////                foreach ($this->session->products as $cart_itm) {
-////                    if ($cart_itm["code"] == $product_code) {
-////                        $product[] = array('name' => $cart_itm["name"], 'code' => $cart_itm["code"], 'qty' => $product_qty, 'price' => $cart_itm["price"]);
-////                        $found = true;
-////                    } else {
-////                        $product[] = array('name' => $cart_itm["name"], 'code' => $cart_itm["code"], 'qty' => $cart_itm["qty"], 'price' => $cart_itm["price"]);
-////                    }
-////                }
-////                if ($found = false) {
-////                    $this->session->products = array_merge($product, $new_product);
-////                } else {
-//////found user item in array list, and increased the quantity
-////                    $this->session->products = $product;
-////                }
-////            } else {
-////                $this->session->products = $new_product;
-////            }
-//            }
-//
-//            $view_data = array();
-//            $view_data['cart'] = $this->session->userdata('cart');
-//
-//            //past products data to view
-//            $view_data['products'] = $this->m_products->get_products();
-//
-//            //call view
-//            $this->load->view('v_food', $view_data);
-//        }
-//        if (isset($_POST["remove"])) {
-//            if ($product_id=="all"){
-//                $this->cart->destroy();
-//            } else{
-//                $data = array(
-//                    'id' => $product_id,
-//                    'qty' => 0
-//                    );
-//                $this->cart->update($data);
-//            }
-//            
-//        } else {
-//            redirect('mainlogin/restricted');
-//        }
-//    }
-//
-//    public function checkout() {
-//        if ($this->session->userdata('is_logged_in')) {
-////load  m_products model
-//            $this->load->model('m_products');
-//
-//            if (isset($_POST["addtocart"])) {
-//
-//                $product_id = $this->input->post('id');
-//                $product_qty = $this->input->post('product_qty');
-//                $product = $this->m_products->get_product($product_id); //
-//                //echo $product_id." ".$product_qty;
-//                //echo $product->product_desc;
-//                $cart_session = array();
-//                if ($this->session->userdata('cart') !== FALSE) {
-//                    $cart_session = $this->session->userdata('cart');
-//                }
-//                $cart_session[$product_id] = [
-//                    'name' => $product->product_name,
-//                    'code' => $product->product_code,
-//                    'price' => $product->price * $product_qty,
-//                    'qty' => $product_qty
-//                ];
-//                //print_r($cart_session);
-//                $this->session->set_userdata('cart', $cart_session);
-//
-////
-////            if (isset($this->session->products)) {
-////                $found = false;
-////
-////                foreach ($this->session->products as $cart_itm) {
-////                    if ($cart_itm["code"] == $product_code) {
-////                        $product[] = array('name' => $cart_itm["name"], 'code' => $cart_itm["code"], 'qty' => $product_qty, 'price' => $cart_itm["price"]);
-////                        $found = true;
-////                    } else {
-////                        $product[] = array('name' => $cart_itm["name"], 'code' => $cart_itm["code"], 'qty' => $cart_itm["qty"], 'price' => $cart_itm["price"]);
-////                    }
-////                }
-////                if ($found = false) {
-////                    $this->session->products = array_merge($product, $new_product);
-////                } else {
-//////found user item in array list, and increased the quantity
-////                    $this->session->products = $product;
-////                }
-////            } else {
-////                $this->session->products = $new_product;
-////            }
-//            }
-//            $view_data = array();
-//            $view_data['cart'] = $this->session->userdata('cart');
-//
-//            //past products data to view
-//            $view_data['products'] = $this->m_products->get_products();
-//
-//            //call view
-//            $this->load->view('v_checkout', $view_data);
-//        } else {
-//            redirect('mainlogin/restricted');
-//        }
-//    }
-//
-//    public function confirm() {
-//        if ($this->session->userdata('is_logged_in')) {
-//            $this->load->view('v_confirm');
-//        } else {
-//            redirect('mainlogin/restricted');
-//        }
-//    }
-
     public function restricted() {
         $this->load->view('v_restricted');
     }
@@ -222,47 +71,29 @@ class Mainlogin extends CI_Controller {
         $this->form_validation->set_rules('lastname', 'Lastname', 'required|alpha');
         $this->form_validation->set_rules('username', 'Username', 'required|trim|is_unique[users.username]');
 
-
-        if ($this->form_validation->run()) {
-            $config['protocol'] = 'sendmail';
-            $config['mailpath'] = '/usr/sbin/send
-    mail';
-            $this->email->initialize($config);
-//generate random key
-            $key = md5(uniqid());
-            $email = $this->input->post('email');
-            $this->load->library('email');
-            //$email = $this->session->userdata('email');
-            //$email_code = $this->email_code;
+        if ($this->form_validation->run()){
             $this->load->model('m_user');
-
-            $this->email->set_mailtype('html');
-            $this->email->from('admin@orenjiebi.com', "Admin");
-            $this->email->to($email);
-            $this->email->subject('Confirm your account');
-
-            $message = "<p>Thanks a bunch of love for signing up.</p>";
-            $message .= "<p><a href='" . base_url() . "main/register_user/$key'>Click me</a> to confirm your account</p>";
-
-            $this->email->message($message);
-
-            if ($this->m_user->prosessignup($key)) {
-                if ($this->email->send()) {
-                    echo "email has been sent";
-                    print_r($this->load->view('v_login'));
-                } else
-                    echo "email cannot be sent";
-            } else
-                echo "failed add to database";
-        } else {
-            $this->load->view('v_signup');
+//            echo "yes";
+//          $data = array(
+//          'firstname' => $this->input->post('firstname'),
+//          'lastname' => $this->input->post('lastname'),
+//          'email' => $this->input->post('email'),
+//          'username' => $this->input->post('username'),
+//          'password' => $this->input->post('password')
+//                    );
+//      
+//      $query = $this->db->insert('users', $data);
+//      if ($query){
+//          return true;
+//      } else {
+//          return false;
+//      }
+//      
+//      
+        }else {
+          echo "no";
+        $this->load->view('v_signup');
         }
-        //if ($this->form_validation->run()){
-        //  echo "yes";
-        //}else {
-        //  echo "no";
-        //$this->load->view('v_signup');
-        //}
     }
 
     public function validate_credentials() {
@@ -284,11 +115,17 @@ class Mainlogin extends CI_Controller {
     public function signup() {
         $this->load->view('v_signup');
     }
+
     public function index() {
-        //Get all data from database
-        $data['products'] = $this->m_billing->get_all();
-        //send all product data to "v_shop", which fetch from database.		
-        $this->load->view('v_shop', $data);
+        if ($this->session->userdata('is_logged_in')) {
+            //Get all data from database
+            $data['products'] = $this->m_billing->get_all();
+            //$this->load->view('v_billing', $data);
+            //send all product data to "v_shop", which fetch from database.		
+            $this->load->view('v_shop', $data);
+        } else {
+            redirect('mainlogin/restricted');
+        }
     }
 
     function add() {
@@ -349,8 +186,21 @@ class Mainlogin extends CI_Controller {
     }
 
     function billing_view() {
-        // Load "billing_view".
-        $this->load->view('v_billing');
+        if ($this->session->userdata('is_logged_in')) {
+// Load "billing_view".
+            $this->load->view('v_billing');
+        } else {
+            redirect('mainlogin/restricted');
+        }
+    }
+
+    public function complete_order() {
+        $complete = array(
+            'id' => $this->input->post('id'),
+            'name' => $this->input->post('name'),
+            'price' => $this->input->post('price'),
+            'qty' => 1
+        );
     }
 
     public function save_order() {
@@ -387,7 +237,7 @@ class Mainlogin extends CI_Controller {
         endif;
 
         // After storing all imformation in database load "billing_success".
-        $this->load->view('billing_success');
+        $this->load->view('v_success');
     }
 
 }

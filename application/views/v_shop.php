@@ -22,8 +22,8 @@
     <body>
       <div id='content'>
                 <div id='tag'>
-                   <!-- Formget Fugo logo image -->
-                    <img src="<?php echo base_url(); ?>images/head_cart.png"/>
+                   
+                    <img src="<?php echo base_url(); ?>images/cross.png"/>
                 </div>
         <div id="cart" >
             <div id = "heading">
@@ -88,7 +88,8 @@
                               
                             <?php 
                             // cancle image.
-                            $path = "<img src='http://localhost/codeigniter_cart/images/cart_cross.jpg' width='25px' height='20px'>";
+                            
+                            $path = "<img src='D:/KREYDLEPROJ/ajenglocal/ci_tutorial/images/cross.png'  width='50px' height='50px'>";
                             echo anchor('mainlogin/remove/' . $item['rowid'], $path); ?>
                             </td>
                      <?php endforeach; ?>
@@ -140,9 +141,11 @@
                         
                         // Create form and send values in 'shopping/add' function.
                         echo form_open('mainlogin/add');
+                        //echo form_open();
                         echo form_hidden('id', $id);
                         echo form_hidden('name', $name);
                         echo form_hidden('price', $price);
+                        
                         ?> </div> 
                     <div id='add_button'>
                         <?php
@@ -155,6 +158,7 @@
                         // Submit Button.
                         echo form_submit($btn);
                         echo form_close();
+                        //echo form_close();
                         ?>
                     </div>
                 </div>
