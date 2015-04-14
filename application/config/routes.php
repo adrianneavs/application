@@ -38,7 +38,7 @@
 |
 */
 
-$route['default_controller'] = "mainlogin/halamanutama";
+$route['default_controller'] = "mainlogin/index";
 $route['404_override'] = '';
 
 

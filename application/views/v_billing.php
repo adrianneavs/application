@@ -5,8 +5,8 @@ $qty= 0;
 if ($cart = $this->cart->contents()) {
     foreach ($cart as $item) {
         $grand_total = $grand_total + $item['subtotal'];
-        $name = $item['name'];
-        $qty = $item['qty'];
+//        $name = $item['name'];
+//        $qty = $item['qty'];
     }
     
 }
@@ -24,13 +24,14 @@ if ($cart = $this->cart->contents()) {
             <div id="bill_info">
 
     <?php // Create form for enter user imformation and send values 'shopping/save_order' function ?>
-                <form name="billing" method="post" action="<?php echo base_url() . 'mainlogin/billing_view' ?>" >
+                <form name="billing" method="post" action="<?php echo base_url() . 'mainlogin/save_order' ?>" >
                     <input type="hidden" name="command" />
                     <div align="center">
                         <h1 align="center">Billing Info</h1>
                         <table border="3" cellpadding="2px">
-                            <tr><td>Meals:</td><td><strong><?php echo $name; ?></strong></td></tr>
+<!--                            <tr><td>Meals:</td><td><strong><?php echo $name; ?></strong></td></tr>
                             <tr><td>Qty:</td><td><strong><?php echo $qty; ?></strong></td></tr>
+                            -->                            
                             <tr><td>Order Total:</td><td><strong>$<?php echo number_format($grand_total, 2); ?></strong></td></tr>
                             <tr><td>Your Name:</td><td><input type="text" name="custname" required=""/></td></tr>
                             <tr><td>Address:</td><td><input type="text" name="address" required="" /></td></tr>

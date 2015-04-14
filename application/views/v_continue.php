@@ -7,8 +7,8 @@
         <link rel="stylesheet" href="<?php echo base_url('boots/css/bootstrap-theme.min.css'); ?>">
         <script src="<?php echo base_url('boots/js/bootstrap.min.js'); ?>"></script>
             <?php
-echo '<h1>YOU DON`T HAVE TO ACCESS THIS PAGE</h1>';
-echo '<h1>PLEASE LOG IN FIRST</h1>';
+echo '<h3> To cotinue please login first</h3>';
+echo '<h3>No account? Sign up!</h3>';
 $this->load->view('v_login');
 /*
  * To change this license header, choose License Headers in Project Properties.
