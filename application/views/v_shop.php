@@ -76,10 +76,25 @@
 
 <!--                    <img src="<?php echo base_url(); ?>images/cross.png"/>-->
             </div>
-            <span class="glyphicon glyphicon-wrench"><a href ='<?php echo base_url() . "mainlogin/profile" ?>'>EDIT PROFILE</a></span><br>
-            <span class="glyphicon glyphicon-off"><a href ='<?php echo base_url() . "mainlogin/userlogout" ?>'>LOGOUT</a></span>
-            <div id="cart" >
-                
+            <?php
+            $loginbtn = $this->input->post('loginbtn');
+            if (isset($loginbtn)) {
+                $username = $this->input->post('username');
+                if (isset($username)) {
+                    echo "Hi, " . $username . "</br>";
+                }
+            }
+            ?>
+            <?php
+            $query = $this->db->get('users');
+            foreach ($query->result() as $row) {
+                ?>
+                <span class="glyphicon glyphicon-wrench"><a href ='<?php echo base_url() . "mainlogin/profile/$row->username" ?>'>EDIT PROFILE</a></span><br>
+                <span class="glyphicon glyphicon-off"><a href ='<?php echo base_url() . "mainlogin/userlogout" ?>'>LOGOUT</a></span><br>
+                <div id="cart" >
+                    <?php
+                }
+                ?>
                 <div id="text"> 
                     <?php
                     $cart_check = $this->cart->contents();
@@ -155,10 +170,10 @@
                                 echo number_format($grand_total, 2);
                                 ?></b></td>
 
-                        <?php // "clear cart" button call javascript confirmation message    ?>
+                        <?php // "clear cart" button call javascript confirmation message     ?>
                         <td colspan="5" align="right"><input type="button" class ='btn btn-danger' value="Clear Cart" onclick="clear_cart()">
 
-                            <?php //submit button.    ?>
+                            <?php //submit button.      ?>
                             <input type="submit" class ='btn btn-info' value="Update Cart">
                             <?php echo form_close(); ?>
 
@@ -168,10 +183,10 @@
                 <?php endif; ?>
 
             </div>
-<div class="jumbotron">
-    <h2 id="head" align="center">Products</h2></div>
+            <div class="jumbotron">
+                <h2 id="head" align="center">Products</h2></div>
             <?php
-            // "$products" send from "shopping" controller,its stores all product which available in database. 
+// "$products" send from "shopping" controller,its stores all product which available in database. 
             foreach ($products as $product) {
                 $id = $product['serial'];
                 $name = $product['name'];
@@ -217,6 +232,6 @@
 
         <?php } ?>
 
-       
+
     </body>
 </html>

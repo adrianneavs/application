@@ -31,6 +31,7 @@ and open the template in the editor.
             <h2 id="head" align="center">Edit Profile</h2></div>
 
         <?php
+
         foreach ($userdata1 as $userdata) {
             $id = $userdata['id'];
             $firstname = $userdata['firstname'];
@@ -72,9 +73,9 @@ and open the template in the editor.
                     <div class="col-md-4"></div>
                 </div>
             </div>
-            <?php
-        }
-        ?>
+    <?php
+}
+?>
 
     </body>
 </html>

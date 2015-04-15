@@ -43,7 +43,7 @@
                                         <input type="password" name="password" class="form-control" placeholder="Password">
                                     </div>
                                 </div>
-                                <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-cutlery"></span> Log In</button><br><br>
+                                <button type="submit" class="btn btn-primary" name="loginbtn"><span class="glyphicon glyphicon-cutlery"></span> Log In</button><br><br>
                                     <p>No account? <a href="<?php echo base_url() . "mainlogin/signup"; ?>">Sign Up</a>
                             </form>
                         </div>

@@ -81,6 +81,9 @@
             }
         }
 
+        public function getusername(){
+            
+        }
         public function signup_valid() {
             $this->load->library('form_validation');
             $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email|is_unique[users.email]');
@@ -136,7 +139,7 @@
             }
 
             public function profile() {
-                $id = $this->uri->segment(3);
+                $username = $this->uri->segment(3);
                 $data['userdata'] = $this->m_billing->get_user();
                 $data['userdata1'] = $this->m_billing->get_user();
                 $this->load->view('v_profile', $data);
