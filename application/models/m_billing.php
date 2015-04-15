@@ -10,10 +10,36 @@ class M_billing extends CI_Model {
         $query = $this->db->get('products');
         return $query->result_array();
     }
-public function get_user(){
-    $query1 = $this->db->get('users');
+
+    public function get($username = null) {
+
+        if ($username == null) {
+            $query = $this->db->get('users');
+        } else {
+            $query = $this->db->get_where('username', ['username' => $username]);
+        }
+        return $query->result();
+    }
+
+    public function get_user() {
+        $query1 = $this->db->get('users');
         return $query1->result_array();
-}
+    }
+
+    public function get_user_id($data) {
+        $this->db->select('*');
+        $this->db->from('users');
+        $this->db->where('aidi', $data);
+        $query = $this->db->get();
+        $result = $query->result();
+        return $result;
+    }
+
+    public function edituser($id, $data) {
+        $this->db->where('aidi', $id);
+        $this->db->update('users', $data);
+    }
+
     public function get_all_user($username) {
         $query = $this->db->get_where('users', array('username' => $username));
         if ($query->num_rows() > 0) {
@@ -30,8 +56,8 @@ public function get_user(){
     }
 
 // Insert customer details in "customer" table in database.
-    public function insert_customer($data) {
-        $this->db->insert('customers', $data);
+    public function insert_customer($customer) {
+        $this->db->insert('customers', $customer);
         $id = $this->db->insert_id();
         return (isset($id)) ? $id : FALSE;
     }
@@ -50,7 +76,7 @@ public function get_user(){
 
     public function insert_order_complete($data) {
         $order_detail = $this->db->get('order_detail');
-        $customer = $this->db->get('customer');
+        $customer = $this->db->get('customers');
         $order_complete = $this->db->insert('order_complete', $customer);
         $order_complete = $this->db->insert('order_complete', $order_detail);
         $this->db->select('(SELECT serial, name, email, address, phone FROM customers WHERE customers.serial=order_detail.orderid');

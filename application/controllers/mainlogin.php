@@ -68,13 +68,12 @@
                 $username = $this->input->post('username');
                 $this->load->model('m_billing');
                 $result = $this->m_billing->get_all_user($username);
-//                $data = array(
-//                    'username' => $this->input->post('username'), 'is_logged_in' => 1
-//                );
-//                $this->session->set_userdata($data);
-
-//                $data1['welcome'] = $this->session->userdata('username');
-//                $this->load->view('v_shop', $data1);
+                $data = array(
+                    'username' => $this->input->post('username'), 'is_logged_in' => 1
+                );
+                $this->session->set_userdata($data);
+                $data1['welcome'] = $this->session->userdata('username');
+                $this->load->view('v_shop', $data1);
 
                 redirect('mainlogin/index');
             } else {
@@ -137,10 +136,40 @@
             }
 
             public function profile() {
-
-                $data1['userdata'] = $this->m_billing->get_user();
-                $this->load->view('v_profile', $data1);
+                $id = $this->uri->segment(3);
+                $data['userdata'] = $this->m_billing->get_user();
+                $data['userdata1'] = $this->m_billing->get_user();
+                $this->load->view('v_profile', $data);
             }
+
+            public function edituser() {
+                if ($this->session->userdata('is_logged_in')) {
+                    $session_data = $this->session->userdata('is_logged_in');
+                    $data['username'] = $session_data['username'];
+
+                    $this->load->model('m_billing');
+                    $bookid = $this->m_products->get();
+
+                    $this->load->view('v_profile');
+                }
+//         else {
+//        $this->load->view('404_page');
+//        }
+            }
+
+//                
+//                $id = $this->input->post('aidi');
+//                $data = array(
+//                    'firstname' => $this->input->post('firstname'),
+//                    'lastname' => $this->input->post('lastname'),
+//                    'email' => $this->input->post('email'),
+//                    'username' => $this->input->post('username'),
+//                    'password' => $this->input->post('password')
+//                );
+//
+//                $this->m_billing->edituser($id,$data);
+//                $this->profile();
+
 
             public function index() {
 //                if ($this->session->userdata('is_logged_in')) {
@@ -191,6 +220,10 @@
                 redirect('mainlogin/index');
             }
 
+            function deleteuser() {
+                
+            }
+
             function update_cart() {
 
                 // Recieve post values,calcute them and update
@@ -216,6 +249,14 @@
             function billing_view() {
                 if ($this->session->userdata('is_logged_in')) {
 // Load "billing_view".
+//            $data = array(
+//                'ordertotal' => $this->input->post('ordertotal'),
+//                'custname' => $this->input->post('custname'),
+//                'address'=> $this->input->post('address'),
+//                'email' => $this->input->post('email'),
+//                'phone' => $this->input->post('phone')
+//            );
+//            
                     $this->load->view('v_billing');
                 } else {
                     redirect('mainlogin/tocontinue');
@@ -241,7 +282,7 @@
                 );
                 // And store user imformation in database.
                 $cust_id = $this->m_billing->insert_customer($customer);
-
+                
                 $order = array(
                     'date' => date('Y-m-d'),
                     'customerid' => $cust_id
@@ -249,23 +290,22 @@
 
                 $ord_id = $this->m_billing->insert_order($order);
 
-                if ($cart = $this->cart->contents()):
-                    foreach ($cart as $item):
-                        $order_detail = array(
-                            'orderid' => $ord_id,
-                            'productid' => $item['id'],
-                            'quantity' => $item['qty'],
-                            'price' => $item['price']
-                        );
-
-                        // Insert product imformation with order detail, store in cart also store in database. 
-
-                        $cust_id = $this->m_billing->insert_order_complete($order_complete);
-                    endforeach;
-                endif;
-
+//        if ($cart = $this->cart->contents()):
+//        foreach ($cart as $item):
+//        $order_detail = array(
+//        'orderid' => $ord_id,
+//        'productid' => $item['id'],
+//        'quantity' => $item['qty'],
+//        'price' => $item['price']
+//        );
+//
+//        // Insert product imformation with order detail, store in cart also store in database. 
+//
+//        $cust_id = $this->m_billing->insert_order_complete($order_complete);
+//        endforeach;
+//        endif;
                 // After storing all imformation in database load "billing_success".
-                $this->load->view('v_success');
+                $this->load->view('v_billing');
             }
 
         }

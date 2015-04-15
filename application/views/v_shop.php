@@ -17,8 +17,30 @@
                     return false; // cancel button
                 }
             }
+            function bigImg(x)
+            {
+                x.style.height = "500px";
+                x.style.width = "500px";
+            }
+            function oriImg(x)
+            {
+                x.style.height = "200px";
+                x.style.width = "200px";
+            }
         </script>
         <style>
+            body {
+                background-color: #ff6961;    
+            }
+            h2{
+                color: black;
+            }
+            h4{
+                color:white;
+            }
+            td {
+                color:black;
+            }
             div.img {
                 margin: 5px;
                 padding: 5px;
@@ -54,35 +76,34 @@
 
 <!--                    <img src="<?php echo base_url(); ?>images/cross.png"/>-->
             </div>
-            <a href ='<?php echo base_url() . "mainlogin/profile" ?>'>Edit Profile</a>
+            <span class="glyphicon glyphicon-wrench"><a href ='<?php echo base_url() . "mainlogin/profile" ?>'>EDIT PROFILE</a></span><br>
+            <span class="glyphicon glyphicon-off"><a href ='<?php echo base_url() . "mainlogin/userlogout" ?>'>LOGOUT</a></span>
             <div id="cart" >
-                <div id = "heading">
-                    <h2 align="center">Products on Your Shopping Cart</h2>
-                </div>
-
+                
                 <div id="text"> 
                     <?php
                     $cart_check = $this->cart->contents();
 
                     // If cart is empty, this will show below message.
                     if (empty($cart_check)) {
-                        echo 'To add products to your shopping cart click on "Add to Cart" Button';
+                        echo '<h4>To add products to your shopping cart click on "Add to Cart" Button</h4>';
                     }
-                
                     ?> </div>
-                <table id="table" border="0" cellpadding="5px" cellspacing="1px">
+                <table class="table table-hover" border="4" cellpadding="5px" cellspacing="1px">
                     <?php
                     // All values of cart store in "$cart". 
                     if ($cart = $this->cart->contents()):
                         ?>
+
                         <tr id= "main_heading">
-                            <td>Serial</td>
-                            <td>Name</td>
-                            <td>Price</td>
-                            <td>Qty</td>
-                            <td>Amount</td>
-                            <td>Cancel Product</td>
+                            <td><strong>Serial</strong></td>
+                            <td><strong>Name</strong></td>
+                            <td><strong>Price</strong></td>
+                            <td><strong>Qty</strong></td>
+                            <td><strong>Total</strong></td>
+                            <td><strong>Cancel</strong></td>
                         </tr>
+
                         <?php
                         // Create form and send all values in "shopping/update_cart" function.
                         echo form_open('mainlogin/update_cart');
@@ -127,27 +148,28 @@
                                 </td>
                             <?php endforeach; ?>
                         </tr>
-                        <tr>
-                            <td><b>Order Total: $<?php
-                                    //Grand Total.
-                                    echo number_format($grand_total, 2);
-                                    ?></b></td>
+                    </table>
+                    <tr>
+                        <td><b>Order Total: $<?php
+                                //Grand Total.
+                                echo number_format($grand_total, 2);
+                                ?></b></td>
 
-                            <?php // "clear cart" button call javascript confirmation message   ?>
-                            <td colspan="5" align="right"><input type="button" class ='fg-button teal' value="Clear Cart" onclick="clear_cart()">
+                        <?php // "clear cart" button call javascript confirmation message    ?>
+                        <td colspan="5" align="right"><input type="button" class ='btn btn-danger' value="Clear Cart" onclick="clear_cart()">
 
-                                <?php //submit button.   ?>
-                                <input type="submit" class ='fg-button teal' value="Update Cart">
-                                <?php echo form_close(); ?>
+                            <?php //submit button.    ?>
+                            <input type="submit" class ='btn btn-info' value="Update Cart">
+                            <?php echo form_close(); ?>
 
-                                <!-- "Place order button" on click send "billing" controller  -->
-                                <input type="button" class ='fg-button teal' value="Place Order" onclick="window.location = 'billing_view'"></td>
-                        </tr>
-                    <?php endif; ?>
-                </table>
+                            <!-- "Place order button" on click send "billing" controller  -->
+                            <input type="button" class ='btn btn-success' value="Place Order" onclick="window.location = 'billing_view'"></td>
+                    </tr>
+                <?php endif; ?>
+
             </div>
-
-            <h2 id="head" align="center">Products</h2>
+<div class="jumbotron">
+    <h2 id="head" align="center">Products</h2></div>
             <?php
             // "$products" send from "shopping" controller,its stores all product which available in database. 
             foreach ($products as $product) {
@@ -157,7 +179,7 @@
                 $price = $product['price'];
                 ?>
                 <div class="img">
-                    <img src="<?php echo base_url() . $product['picture'] ?>" class="img-circle" width="300" height="300"/>
+                    <img src="<?php echo base_url() . $product['picture'] ?>" onmouseover="bigImg(this)" onmouseout="oriImg(this)" class="img-circle" width="200" height="200"/>
 
                     <!--                            <div class="desc">-->
                     <div id='name'><?php echo $name; ?></div>
@@ -185,15 +207,16 @@
                         echo form_submit($btn);
                         echo form_close();
                         //echo form_close();
+                        echo '</br>';
+                        echo '</br>';
                         ?>
                     </div>
 
                 </div>
             </div>
+
         <?php } ?>
 
-
-
-        <a href ='<?php echo base_url() . "mainlogin/userlogout" ?>'>LOGOUT</a>
+       
     </body>
 </html>

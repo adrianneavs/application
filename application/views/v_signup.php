@@ -13,14 +13,22 @@ and open the template in the editor.
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="<?php echo base_url('boots/css/bootstrap.min.css'); ?>">
     <link rel="stylesheet" href="<?php echo base_url('boots/css/bootstrap-theme.min.css'); ?>">
-    <script src="<?php echo base_url('boots/js/bootstrap.min.js'); ?>"></script></head>
+    <script src="<?php echo base_url('boots/js/bootstrap.min.js'); ?>"></script>
+    <style>
+            body{
+            background-image: url("http://s15.postimg.org/d1ksncly3/anigif.gif");
+            background-repeat: no-repeat;
+            background-size: 1900px 1062px;
+            }
+        </style>
+    </head>
 <body>
 
     <br><br>
     <div class ="container">
         <div class="row">
-            <div class="col-md-5"></div>
-            <div class="col-md-5">
+            <div class="col-md-8"></div>
+            <div class="col-md-4">
                 <div class="panel panel-default">
                     <div class="panel-body">
                         <div class="page-header">
@@ -33,31 +41,31 @@ and open the template in the editor.
                             <div class="form-group">
                                 <label for="inputfn3" class="col-sm-2 control-label">Firstname</label>
                                 <div class="col-sm-10">
-                                    <input type="text" name="firstname" class="form-control" id="inputfn3" placeholder="No Space">
+                                    <input type="text" name="firstname" class="form-control" id="inputfn3" placeholder="No Space" required="">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="inputfn3" class="col-sm-2 control-label">Lastname</label>
                                 <div class="col-sm-10">
-                                    <input type="text" name="lastname" class="form-control" id="inputfn3" placeholder="No Space">
+                                    <input type="text" name="lastname" class="form-control" id="inputfn3" placeholder="No Space" required="">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
                                 <div class="col-sm-10">
-                                    <input type="email" name="email" class="form-control" id="inputEmail3" placeholder="Email">
+                                    <input type="email" name="email" class="form-control" id="inputEmail3" placeholder="Email" required="">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="inputfn3" class="col-sm-2 control-label">Username</label>
                                 <div class="col-sm-10">
-                                    <input type="text" name="username" class="form-control" id="inputfn3" placeholder="Username">
+                                    <input type="text" name="username" class="form-control" id="inputfn3" placeholder="Username" required="">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="inputPassword3" class="col-sm-2 control-label">Password</label>
                                 <div class="col-sm-10">
-                                    <input type="password" name="password" class="form-control" id="inputPassword3" placeholder="Password">
+                                    <input type="password" name="password" class="form-control" id="inputPassword3" placeholder="Password" required="">
                                 </div>
                             </div>
                             <div class="form-group">
