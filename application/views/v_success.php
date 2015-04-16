@@ -1,3 +1,50 @@
+<?php
+$grand_total = 0;
+$i = 1;
+// Calculate grand total.
+if ($cart = $this->cart->contents()) {
+    foreach ($cart as $item => $value) {
+        ?>
+                                    <tr>
+                                <td>
+                                    <?php echo $i++; ?>
+                                </td>
+                                <td>
+                                    <?php echo $value['name']; ?>
+                                </td>
+                                
+                                <td>
+                                    $ <?php echo number_format($value['price'], 2); ?>
+                                </td>
+                                <td>
+                                    <?php echo form_input('cart[' . $value['id'] . '][qty]', $value['qty'], 'maxlength="3" size="1" style="text-align: right"'); ?>
+                                </td>
+                                <?php $grand_total = $grand_total + $value['subtotal']; ?>
+                                <td>
+                                    $ <?php echo number_format($value['subtotal'], 2) ?>
+                                </td>
+                            
+                                <td>
+
+                                    <?php
+                                     echo anchor('mainlogin/deleteorder/' . $value['id'], 'X');
+                                    ?>
+                                </td>
+                           
+                        </tr>
+                    </table>
+
+        <!--//        $grand_total = $grand_total + $item['subtotal'];
+        //        $name = $item['name'];
+        //        $qty = $item['qty'];-->
+        <?php
+    }
+}
+?>
+        
+        
+
+        
 <html>
     <head>
         <title>Codeigniter cart class</title>

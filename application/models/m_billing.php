@@ -7,9 +7,22 @@ class M_billing extends CI_Model {
 
 // Get all details ehich store in "products" table in database.
     public function get_all() {
+
         $query = $this->db->get('products');
         return $query->result_array();
     }
+//
+//    public function get_username() {
+//        $this->db->where('username', $this->input->post('username'));
+//        $this->db->where('password', $this->input->post('password'));
+//        $query1 = $this->db->get('users');
+//
+//        if ($query1->num_rows() == 1) {
+//            return $query1->result();
+//        } else {
+//            return false;
+//        }
+//    }
 
     public function get($username = null) {
 
@@ -70,8 +83,8 @@ class M_billing extends CI_Model {
     }
 
 // Insert ordered product detail in "order_detail" table in database.
-    public function insert_order_detail($data) {
-        $this->db->insert('order_detail', $data);
+    public function insert_order_detail($order_detail) {
+        $this->db->insert('order_detail', $order_detail);
     }
 
     public function insert_order_complete($data) {

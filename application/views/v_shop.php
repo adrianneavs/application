@@ -17,6 +17,9 @@
                     return false; // cancel button
                 }
             }
+            function myFunction() {
+                document.getElementById("coba").readOnly = false;
+            }
             function bigImg(x)
             {
                 x.style.height = "500px";
@@ -77,24 +80,15 @@
 <!--                    <img src="<?php echo base_url(); ?>images/cross.png"/>-->
             </div>
             <?php
-            $loginbtn = $this->input->post('loginbtn');
-            if (isset($loginbtn)) {
-                $username = $this->input->post('username');
-                if (isset($username)) {
-                    echo "Hi, " . $username . "</br>";
-                }
-            }
+//            $query = $this->db->get('users');
+//            $query1 = $query->result();
+//            $getuser = $query1->username; {
+//                
             ?>
-            <?php
-            $query = $this->db->get('users');
-            foreach ($query->result() as $row) {
-                ?>
-                <span class="glyphicon glyphicon-wrench"><a href ='<?php echo base_url() . "mainlogin/profile/$row->username" ?>'>EDIT PROFILE</a></span><br>
-                <span class="glyphicon glyphicon-off"><a href ='<?php echo base_url() . "mainlogin/userlogout" ?>'>LOGOUT</a></span><br>
-                <div id="cart" >
-                    <?php
-                }
-                ?>
+            <span class="glyphicon glyphicon-wrench"><a href ='<?php echo base_url() . "mainlogin/profile/" ?>'>EDIT PROFILE</a></span><br>
+            <span class="glyphicon glyphicon-off"><a href ='<?php echo base_url() . "mainlogin/userlogout" ?>'>LOGOUT</a></span><br>
+            <div id="cart" >
+
                 <div id="text"> 
                     <?php
                     $cart_check = $this->cart->contents();
@@ -116,9 +110,10 @@
                             <td><strong>Price</strong></td>
                             <td><strong>Qty</strong></td>
                             <td><strong>Total</strong></td>
+                            
                             <td><strong>Cancel</strong></td>
                         </tr>
-
+                        
                         <?php
                         // Create form and send all values in "shopping/update_cart" function.
                         echo form_open('mainlogin/update_cart');
@@ -135,6 +130,7 @@
                             echo form_hidden('cart[' . $item['id'] . '][name]', $item['name']);
                             echo form_hidden('cart[' . $item['id'] . '][price]', $item['price']);
                             echo form_hidden('cart[' . $item['id'] . '][qty]', $item['qty']);
+                            
                             ?>
                             <tr>
                                 <td>
@@ -143,6 +139,7 @@
                                 <td>
                                     <?php echo $item['name']; ?>
                                 </td>
+                                
                                 <td>
                                     $ <?php echo number_format($item['price'], 2); ?>
                                 </td>
@@ -153,11 +150,10 @@
                                 <td>
                                     $ <?php echo number_format($item['subtotal'], 2) ?>
                                 </td>
+                            
                                 <td>
-        <!--                            <span class = "glyphicon glyphicon-remove"></span>  -->
+
                                     <?php
-                                    // cancle image.
-//                            $path = "<img src='D:/KREYDLEPROJ/ajenglocal/ci_tutorial/images/cross.png'  width='50px' height='50px'>";
                                     echo anchor('mainlogin/remove/' . $item['rowid'], 'X');
                                     ?>
                                 </td>
@@ -170,10 +166,10 @@
                                 echo number_format($grand_total, 2);
                                 ?></b></td>
 
-                        <?php // "clear cart" button call javascript confirmation message     ?>
+                        <?php // "clear cart" button call javascript confirmation message         ?>
                         <td colspan="5" align="right"><input type="button" class ='btn btn-danger' value="Clear Cart" onclick="clear_cart()">
 
-                            <?php //submit button.      ?>
+                            <?php //submit button.          ?>
                             <input type="submit" class ='btn btn-info' value="Update Cart">
                             <?php echo form_close(); ?>
 
@@ -183,6 +179,8 @@
                 <?php endif; ?>
 
             </div>
+            <br>
+            <input type="text" name="coba" id="coba" readonly>
             <div class="jumbotron">
                 <h2 id="head" align="center">Products</h2></div>
             <?php
