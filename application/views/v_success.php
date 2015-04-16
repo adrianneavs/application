@@ -27,7 +27,7 @@ if ($cart = $this->cart->contents()) {
                                 <td>
 
                                     <?php
-                                     echo anchor('mainlogin/deleteorder/' . $value['id'], 'X');
+                                     echo anchor('mainlogin/deleteorder/' .$value['id'].'/'. $orderid .'/'. $value['rowid'], 'X');
                                     ?>
                                 </td>
                            

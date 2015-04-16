@@ -203,23 +203,22 @@
 
                 // This function add items into cart.
                 $this->cart->insert($insert_data);
-
-                $customer = array(
-                    'name' => $this->input->post('name'),
-                    'email' => $this->input->post('email'),
-                    'address' => $this->input->post('address'),
-                    'phone' => $this->input->post('phone')
-                );
-                // And store user imformation in database.
-                $cust_id = $this->m_billing->insert_customer($customer);
-
-                $order = array(
-                    'date' => date('Y-m-d'),
-                    'customerid' => $cust_id
-                );
-
-                $ord_id = $this->m_billing->insert_order($order);
-
+//
+//                $customer = array(
+//                    'name' => $this->input->post('name'),
+//                    'email' => $this->input->post('email'),
+//                    'address' => $this->input->post('address'),
+//                    'phone' => $this->input->post('phone')
+//                );
+//                // And store user imformation in database.
+//                $cust_id = $this->m_billing->insert_customer($customer);
+//
+//                $order = array(
+//                    'date' => date('Y-m-d'),
+//                    'customerid' => $cust_id
+//                );
+//
+//                $ord_id = $this->m_billing->insert_order($order);
                 // This will show insert data in cart.
                 redirect('mainlogin/index');
             }
@@ -243,9 +242,17 @@
                 redirect('mainlogin/index');
             }
 
-            public function deleteorder($id = "") {
-                $this->db->delete('order_detail', array('orderid' => $id));
-                $this->load->view('v_success');
+            public function deleteorder($prd_id = "", $id = "", $rowid="") {
+                $this->db->delete('order_detail', array('orderid' => $id, 'productid' => $prd_id));
+                $updatedata = array(
+                    'rowid' => $rowid,
+                    'qty' => 0
+                );
+
+                // This function add items into cart.
+                $this->cart->update($updatedata);
+
+                $this->load->view('v_success', array('orderid' => $id));
             }
 
             function deleteuser() {
@@ -325,7 +332,8 @@
                     endforeach;
                 endif;
 
-                $this->load->view('v_success');
+                // After storing all imformation in database load "billing_success".
+                $this->load->view('v_success', array('orderid' => $ord_id)); //pass order id to view
             }
 
         }
