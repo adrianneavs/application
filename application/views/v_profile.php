@@ -30,7 +30,7 @@ and open the template in the editor.
         <div class="jumbotron">
             <h2 id="head" align="center">Edit Profile</h2></div>
 
-        <?php
+<!--        <?php
 
         foreach ($userdata1 as $userdata) {
             $id = $userdata['id'];
@@ -40,7 +40,7 @@ and open the template in the editor.
             $username = $userdata['username'];
             $password = $userdata['password'];
             ?>
-            <div class="container">
+            <div class="container">-->
                 <div class="row">
                     <div class="col-md-4">
                     </div>
@@ -51,17 +51,17 @@ and open the template in the editor.
                                 <form>
                                     <div class="form-group">
                                         <label>ID</label>
-                                        <input type="text" id="aidi" name="aidi" value="<?php echo $id; ?>" readonly="true"><br></div>
+                                        <input type="text" id="aidi" name="aidi" value="<?php echo $userdata->id; ?>" readonly="true"><br></div>
                                     <label>Firstname</label>
-                                    <input type="text" id="firstname" name="firstname" value="<?php echo $firstname; ?>" readonly><br>
+                                    <input type="text" id="firstname" name="firstname" value="<?php echo $userdata->firstname; ?>" readonly><br>
                                     <label>Lastname</label>
-                                    <input type="text" id="lastname" name="lastname" value="<?php echo $lastname; ?>" readonly><br>
+                                    <input type="text" id="lastname" name="lastname" value="<?php echo $userdata->lastname; ?>" readonly><br>
                                     <label>Email</label>
-                                    <input type="text" name="email" id="email" value="<?php echo $email; ?>" readonly><br>
+                                    <input type="text" name="email" id="email" value="<?php echo $userdata->email; ?>" readonly><br>
                                     <label>Username</label>
-                                    <input type="text" id="username" name="username" value="<?php echo $username; ?>" readonly><br>
+                                    <input type="text" id="username" name="username" value="<?php echo $userdata->username; ?>" readonly><br>
                                     <label>Password</label>
-                                    <input type="password" id="password" name="password" value="<?php echo $password; ?>" readonly><br>
+                                    <input type="password" id="password" name="password" value="<?php echo $userdata->password; ?>" readonly><br>
                                     <button type="button" class="btn btn-info" name="editbutton" onclick="myFunction()"><span class="glyphicon glyphicon-pencil"></span>Edit</button>
                                     <button type="submit" class="btn btn-danger" id="okbutton" name="okbutton" disabled="true" onclick="window.location = 'mainlogin/edituser'"><span class="glyphicon glyphicon-trash"></span>OK</button><br><br>
                                     <a href ='<?php echo base_url() . "mainlogin/index" ?>'>Back</a>
@@ -73,9 +73,9 @@ and open the template in the editor.
                     <div class="col-md-4"></div>
                 </div>
             </div>
-    <?php
+   <!--<?php
 }
 ?>
-
+--!>
     </body>
 </html>

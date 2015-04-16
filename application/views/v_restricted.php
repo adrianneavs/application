@@ -6,9 +6,10 @@
         <link rel="stylesheet" href="<?php echo base_url('boots/css/bootstrap.min.css'); ?>">
         <link rel="stylesheet" href="<?php echo base_url('boots/css/bootstrap-theme.min.css'); ?>">
         <script src="<?php echo base_url('boots/js/bootstrap.min.js'); ?>"></script>
-            <?php
-echo '<h1>YOU DON`T HAVE TO ACCESS THIS PAGE</h1>';
-echo '<h1>PLEASE LOG IN FIRST</h1>';
+     <div class="jumbotron">
+            <h2 id="head" align="center">Not Accessable</h2></div>
+       
+<?php
 $this->load->view('v_login');
 /*
  * To change this license header, choose License Headers in Project Properties.

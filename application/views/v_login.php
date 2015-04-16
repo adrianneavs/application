@@ -9,7 +9,7 @@
             body{
             background-image: url("http://s15.postimg.org/d1ksncly3/anigif.gif");
             background-repeat: no-repeat;
-            background-size: 1900px 1062px;
+            background-size: 1400px 750px;
             }
         </style>
     </head>

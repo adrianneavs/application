@@ -33,14 +33,16 @@
         </script>
         <style>
             body {
-                background-color: #ff6961;    
+                /*                background-color: #ff6961;    */
+                background-color: #fdfd96;    
             }
             h2{
                 color: black;
             }
             h4{
-                color:white;
+                color: #cfcfc4;
             }
+
             td {
                 color:black;
             }
@@ -70,6 +72,10 @@
                 width: 120px;
                 margin: 5px;
             }
+            .jumbotron{
+                background-color:#ffffff;
+                color:white;
+            }
 
         </style>
     </head>
@@ -84,9 +90,15 @@
 //            $query1 = $query->result();
 //            $getuser = $query1->username; {
 //                
-            ?>
-            <span class="glyphicon glyphicon-wrench"><a href ='<?php echo base_url() . "mainlogin/profile/" ?>'>EDIT PROFILE</a></span><br>
-            <span class="glyphicon glyphicon-off"><a href ='<?php echo base_url() . "mainlogin/userlogout" ?>'>LOGOUT</a></span><br>
+            ?><div class="col-md-4"></div>
+            <div class="col-md-4"></div>
+
+            <div class="col-md-4">
+                <span class="glyphicon glyphicon-wrench"><a href ='<?php echo base_url() . "mainlogin/profile/" . $username ?>'>EDIT PROFILE</a></span>
+                <span class="glyphicon glyphicon-off"><a href ='<?php echo base_url() . "mainlogin/userlogout" ?>'>LOGOUT</a></span>
+            </div>
+            <br>
+            <br>
             <div id="cart" >
 
                 <div id="text"> 
@@ -110,10 +122,10 @@
                             <td><strong>Price</strong></td>
                             <td><strong>Qty</strong></td>
                             <td><strong>Total</strong></td>
-                            
+
                             <td><strong>Cancel</strong></td>
                         </tr>
-                        
+
                         <?php
                         // Create form and send all values in "shopping/update_cart" function.
                         echo form_open('mainlogin/update_cart');
@@ -130,7 +142,6 @@
                             echo form_hidden('cart[' . $item['id'] . '][name]', $item['name']);
                             echo form_hidden('cart[' . $item['id'] . '][price]', $item['price']);
                             echo form_hidden('cart[' . $item['id'] . '][qty]', $item['qty']);
-                            
                             ?>
                             <tr>
                                 <td>
@@ -139,7 +150,7 @@
                                 <td>
                                     <?php echo $item['name']; ?>
                                 </td>
-                                
+
                                 <td>
                                     $ <?php echo number_format($item['price'], 2); ?>
                                 </td>
@@ -150,7 +161,7 @@
                                 <td>
                                     $ <?php echo number_format($item['subtotal'], 2) ?>
                                 </td>
-                            
+
                                 <td>
 
                                     <?php
@@ -166,10 +177,10 @@
                                 echo number_format($grand_total, 2);
                                 ?></b></td>
 
-                        <?php // "clear cart" button call javascript confirmation message         ?>
+                        <?php // "clear cart" button call javascript confirmation message          ?>
                         <td colspan="5" align="right"><input type="button" class ='btn btn-danger' value="Clear Cart" onclick="clear_cart()">
 
-                            <?php //submit button.          ?>
+                            <?php //submit button.           ?>
                             <input type="submit" class ='btn btn-info' value="Update Cart">
                             <?php echo form_close(); ?>
 
@@ -180,7 +191,7 @@
 
             </div>
             <br>
-            <input type="text" name="coba" id="coba" readonly>
+
             <div class="jumbotron">
                 <h2 id="head" align="center">Products</h2></div>
             <?php
@@ -211,7 +222,7 @@
                     <div id='add_button'>
                         <?php
                         $btn = array(
-                            'class' => 'btn btn-success',
+                            'class' => 'btn btn-warning',
                             'value' => 'Add to Cart',
                             'name' => 'action'
                         );

@@ -11,6 +11,7 @@ class M_billing extends CI_Model {
         $query = $this->db->get('products');
         return $query->result_array();
     }
+
 //
 //    public function get_username() {
 //        $this->db->where('username', $this->input->post('username'));
@@ -36,7 +37,8 @@ class M_billing extends CI_Model {
 
     public function get_user() {
         $query1 = $this->db->get('users');
-        return $query1->result_array();
+        $query_result = $query1->result();
+        return $query_result;
     }
 
     public function get_user_id($data) {
@@ -53,7 +55,7 @@ class M_billing extends CI_Model {
         $this->db->update('users', $data);
     }
 
-    public function get_all_user($username) {
+    public function get_all_user() {
         $query = $this->db->get_where('users', array('username' => $username));
         if ($query->num_rows() > 0) {
             $query = $query->row_array();
@@ -100,4 +102,29 @@ class M_billing extends CI_Model {
         $order_complete = $this->db->insert('order_complete', $order_complete);
     }
 
+    public function show_username($data) {
+        $this->db->select('*');
+        $this->db->from('users');
+        $this->db->where('username', $data);
+        $query = $this->db->get();
+        $result = $query->result();
+        return $result;
+    }
+    
+    public function profile($username, $data){
+        $this->db->where('username', $username);
+        $this->db->update('users', $data);
+    }
+
+    public function proseslogin() {
+        $this->db->where('username', $this->input->post('username'));
+        $this->db->where('password', $this->input->post('password'));
+        $query = $this->db->get('users');
+
+        if ($query->num_rows() == 1) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

@@ -1,3 +1,4 @@
+
 <?php
 $grand_total = 0;
 $i = 1;
@@ -5,34 +6,7 @@ $i = 1;
 if ($cart = $this->cart->contents()) {
     foreach ($cart as $item => $value) {
         ?>
-                                    <tr>
-                                <td>
-                                    <?php echo $i++; ?>
-                                </td>
-                                <td>
-                                    <?php echo $value['name']; ?>
-                                </td>
-                                
-                                <td>
-                                    $ <?php echo number_format($value['price'], 2); ?>
-                                </td>
-                                <td>
-                                    <?php echo form_input('cart[' . $value['id'] . '][qty]', $value['qty'], 'maxlength="3" size="1" style="text-align: right"'); ?>
-                                </td>
-                                <?php $grand_total = $grand_total + $value['subtotal']; ?>
-                                <td>
-                                    $ <?php echo number_format($value['subtotal'], 2) ?>
-                                </td>
-                            
-                                <td>
-
-                                    <?php
-                                    echo anchor('mainlogin/deleteorder/' . $value['id'], 'X');
-                                    ?>
-                                </td>
-                           
-                        </tr>
-                    </table>
+        <?php $grand_total = $grand_total + $value['subtotal']; ?>
 
         <!--//        $grand_total = $grand_total + $item['subtotal'];
         //        $name = $item['name'];
@@ -43,46 +17,89 @@ if ($cart = $this->cart->contents()) {
 ?>
 
 <html>
-            <head>
-                <title>Codeigniter cart class</title>
-                <link rel="stylesheet" type="text/css" href="style.css">
-                <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-                <meta name="viewport" content="width=device-width, initial-scale=1">
-                <link rel="stylesheet" href="<?php echo base_url('boots/css/bootstrap.min.css'); ?>">
-                <link rel="stylesheet" href="<?php echo base_url('boots/css/bootstrap-theme.min.css'); ?>">
-                <script src="<?php echo base_url('boots/js/bootstrap.min.js'); ?>"></script> 
-                <style>
-                    body {
-                        background-color: #77dd77;    
-                    }
-                </style>
-            </head>
-            <body>
-                <div id="bill_info">
+    <head>
+        <title>Codeigniter cart class</title>
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="<?php echo base_url('boots/css/bootstrap.min.css'); ?>">
+        <link rel="stylesheet" href="<?php echo base_url('boots/css/bootstrap-theme.min.css'); ?>">
+        <script src="<?php echo base_url('boots/js/bootstrap.min.js'); ?>"></script> 
+        <style>
+            body {
+                background-color: #77dd77;    
+            }
+        </style>
+    </head>
+    <body>
+        <div id="bill_info">
 
-                    <?php // Create form for enter user imformation and send values 'shopping/save_order' function   ?>
-                    <form name="billing" method="post" action="<?php echo base_url() . 'mainlogin/save_order' ?>" >
-                        <input type="hidden" name="command" />
-                        <div align="center">
-                            <h1 align="center">Billing Info</h1>
-                            <table border="3" cellpadding="2px">
-        <!--                            <tr><td>Meals:</td><td><strong><?php echo $name; ?></strong></td></tr>
-                                <tr><td>Qty:</td><td><strong><?php echo $qty; ?></strong></td></tr>
-                                -->                            
-                                <tr><td>Order Total:</td><td><strong><input type="text" name="ordertotal" value="$<?php echo number_format($grand_total, 2); ?>"></strong></td></tr>
-                                <tr><td>Your Name:</td><td><input type="text" name="custname" required=""/></td></tr>
-                                <tr><td>Address:</td><td><input type="text" name="address" required="" /></td></tr>
-                                <tr><td>Email:</td><td><input type="text" name="email" required="" /></td></tr>
-                                <tr><td>Phone:</td><td><input type="text" name="phone"  required="" /></td></tr>
-                                <tr><td><?php
-                                        // This button for redirect main page.
-                                        echo "<a class ='fg-button teal' id='back' href=" . base_url() . "mainlogin>Back</a>";
-                                        ?>
-                                    </td><td><input type="submit" class ='fg-button teal' value="Place Order" name="place" /></td></tr> 
+            <?php // Create form for enter user imformation and send values 'shopping/save_order' function   ?>
+            <div class ="container">
+                <div class="row">
+                    <div class="col-md-4"></div>
+                    <div class="col-md-4">
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+                                <div class="page-header">
+                                    <h1>Billing Info</h1>
+                                </div>
+                                <form name="billing" method="post" action="<?php echo base_url() . 'mainlogin/save_order' ?>" >
+                                    <input type="hidden" name="command" />
 
-                            </table>
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Order Total</label>
+                                        <div class="input-group">
+                                            <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-user"></span></span>
+                                            <input type="text" name="ordertotal" class="form-control" value="$<?php echo number_format($grand_total, 2); ?>">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Name</label>
+                                        <div class="input-group">
+                                            <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-user"></span></span>
+                                            <input type="text" name="custname" class="form-control" placeholder="Name" required="">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Address</label>
+                                        <div class="input-group">
+                                            <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-user"></span></span>
+                                            <input type="text" name="address" class="form-control" placeholder="Full Address" required="">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Email</label>
+                                        <div class="input-group">
+                                            <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-user"></span></span>
+                                            <input type="text" name="email" class="form-control" placeholder="E.g me@example.com" required="">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Phone</label>
+                                        <div class="input-group">
+                                            <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-user"></span></span>
+                                            <input type="text" name="phone" class="form-control" placeholder="E.g 748743734" required="">
+                                        </div>
+                                    </div>
+
+
+                                    <?php
+                                    // This button for redirect main page.
+                                    echo "<a class ='fg-button teal' id='back' href=" . base_url() . "mainlogin/index>Back</a>";
+                                    ?>
+                                    <input type="submit" class ='btn btn-success' value="Place Order" name="place" /></td></tr> 
+
+
+
+                                </form>
+                            </div>
                         </div>
-                    </form>
+                    </div>
+                    <div class="col-md-4"></div>
                 </div>
+            </div>
+        </div>
+
     </body>
 </html>
