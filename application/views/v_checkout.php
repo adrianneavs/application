@@ -28,7 +28,7 @@ and open the template in the editor.
             <div class ="col-md-4">
                 <div class="alert alert-success" role="alert">Your order has been placed</div><br>
             
-                <a href ="<?php echo base_url() . "mainlogin/index";?>"><span class="glyphicon glyphicon-cart">Shop Again!</span></a>
+                <span class="glyphicon glyphicon-cart"><a href ="<?php echo base_url() . "mainlogin/index";?>">Shop Again!</a></span>
             </div>
             <div class ="col-md-4"></div></div>
             <?php
