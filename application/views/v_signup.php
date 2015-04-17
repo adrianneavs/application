@@ -78,7 +78,7 @@ and open the template in the editor.
                                     <label for="exampleInputEmail1">Password</label>
                                     <div class="input-group">
                                         <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-asterisk"></span></span>
-                                        <input type="password" name="password" class="form-control" placeholder="Password" value="<?php echo $password;?>">
+                                        <input type="password" name="password" class="form-control" placeholder="min 6 characters" value="<?php echo $password;?>">
                                     </div>
                                 </div>
 
