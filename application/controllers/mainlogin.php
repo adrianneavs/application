@@ -161,7 +161,7 @@ public function signupy(){
         $this->load->library('form_validation');
         $this->form_validation->set_rules('firstname', 'Firstname', 'required|callback_alpha_rules');
         $this->form_validation->set_rules('lastname', 'Lastname', 'required|callback_alpha_rules');
-        $this->form_validation->set_rules('username', 'Username', 'required');
+        $this->form_validation->set_rules('username', 'Username', 'required|trim|is_unique[users.username]');
         $this->form_validation->set_rules('password', 'Password', 'required|min_length[6]|max_length[20]|callback_verifiedlogin');
         $this->form_validation->set_rules('email', 'Email', 'required|valid_email');
 
@@ -339,16 +339,16 @@ public function signupy(){
     public function save_order() {
         if ($this->session->userdata('logged_in')) {
             $session_data = $this->session->userdata('logged_in');
-
-            $this->load->library('form_validation');
-            $this->form_validation->set_rules('custname', 'Name', 'required|alpha|trim');
-            $this->form_validation->set_rules('address', 'Address', 'required|trim');
-            $this->form_validation->set_rules('email', 'Email', 'required|alpha|valid_email');
-            $this->form_validation->set_rules('phone', 'Phone', 'required|integer');
-            //            $this->form_validation->set_rules('address', 'Address', 'required');
-//            $this->form_validation->set_rules('phone', 'Phone', 'required|numeric');
-
-            if ($this->form_validation->run()) {
+//
+//            $this->load->library('form_validation');
+//            $this->form_validation->set_rules('custname', 'Name', 'required|alpha|trim');
+//            $this->form_validation->set_rules('address', 'Address', 'required|trim');
+//            $this->form_validation->set_rules('email', 'Email', 'required|alpha|valid_email');
+//            $this->form_validation->set_rules('phone', 'Phone', 'required|integer');
+//            //            $this->form_validation->set_rules('address', 'Address', 'required');
+////            $this->form_validation->set_rules('phone', 'Phone', 'required|numeric');
+//
+//            if ($this->form_validation->run()) {
 
 // This will store all values which inserted  from user.
                 $customer = array(
@@ -386,7 +386,7 @@ public function signupy(){
                 $this->load->view('v_success', array('orderid' => $ord_id)); //pass order id to view
             }
         }
-    }
+    
 
     public function checkout() {
         $this->load->view('v_checkout');
