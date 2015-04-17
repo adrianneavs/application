@@ -19,6 +19,7 @@
         </style>
     </head>
     <body>
+        <?php echo $username;?>
         <div class="jumbotron">
             <h2 align="center">Order History</h2>
         </div>
@@ -86,7 +87,7 @@
         </table>
         <div class="col-md-4"></div>
         <div class="col-md-4">
-            <input type="submit" name="checkout" class="btn btn-primary" value="Checkout">
+            <input type="button" name="checkout" class="btn btn-primary" value="Checkout" onclick="window.location = 'checkout'">
 
             </input>
         </div>

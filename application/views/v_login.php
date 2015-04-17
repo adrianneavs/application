@@ -7,7 +7,7 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
         <style>
             body{
-            background-image: url("http://s15.postimg.org/d1ksncly3/anigif.gif");
+/*            background-image: url("http://s15.postimg.org/d1ksncly3/anigif.gif");*/
             background-repeat: no-repeat;
             background-size: 1400px 750px;
             }

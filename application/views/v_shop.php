@@ -73,7 +73,7 @@
                 margin: 5px;
             }
             .jumbotron{
-                background-color:#ffffff;
+                background-color:#ffb347;
                 color:white;
             }
 
@@ -85,18 +85,19 @@
 
 <!--                    <img src="<?php echo base_url(); ?>images/cross.png"/>-->
             </div>
-            <?php
-//            $query = $this->db->get('users');
-//            $query1 = $query->result();
-//            $getuser = $query1->username; {
-//                
-            ?><div class="col-md-4"></div>
+                <div class="jumbotron">
+                    <h2 id="head" align="center">Products</h2></div>
             <div class="col-md-4"></div>
+            <div class="col-md-4"></div>
+            <div class="col-md-1"></div>
 
             <div class="col-md-4">
+                <h3>Welcome <strong><?php echo" " . $username . "!"; ?> </strong></h3>
                 <span class="glyphicon glyphicon-wrench"><a href ='<?php echo base_url() . "mainlogin/profile/" . $username ?>'>EDIT PROFILE</a></span>
                 <span class="glyphicon glyphicon-off"><a href ='<?php echo base_url() . "mainlogin/userlogout" ?>'>LOGOUT</a></span>
             </div>
+            <?php
+            ?>
             <br>
             <br>
             <div id="cart" >
@@ -155,7 +156,7 @@
                                     $ <?php echo number_format($item['price'], 2); ?>
                                 </td>
                                 <td>
-                                    <?php echo form_input('cart[' . $item['id'] . '][qty]', $item['qty'], 'maxlength="3" size="1" style="text-align: right"'); ?>
+                                    <?php echo form_input('cart[' . $item['id'] . '][qty]', $item['qty'], 'maxlength="3" size="1" style="text-align: right" required|integer'); ?>
                                 </td>
                                 <?php $grand_total = $grand_total + $item['subtotal']; ?>
                                 <td>
@@ -177,10 +178,10 @@
                                 echo number_format($grand_total, 2);
                                 ?></b></td>
 
-                        <?php // "clear cart" button call javascript confirmation message          ?>
+                        <?php // "clear cart" button call javascript confirmation message           ?>
                         <td colspan="5" align="right"><input type="button" class ='btn btn-danger' value="Clear Cart" onclick="clear_cart()">
 
-                            <?php //submit button.           ?>
+                            <?php //submit button.            ?>
                             <input type="submit" class ='btn btn-info' value="Update Cart">
                             <?php echo form_close(); ?>
 
@@ -192,8 +193,7 @@
             </div>
             <br>
 
-            <div class="jumbotron">
-                <h2 id="head" align="center">Products</h2></div>
+
             <?php
 // "$products" send from "shopping" controller,its stores all product which available in database. 
             foreach ($products as $product) {

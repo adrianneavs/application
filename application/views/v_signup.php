@@ -45,85 +45,92 @@ and open the template in the editor.
                             <form class="form-horizontal" action="<?php echo base_url() . "mainlogin/signup_valid"; ?>" method="post">
                                 <?php echo validation_errors(); ?>
                                 <div class="form-group">
-                                    <label for="inputfn3" class="col-sm-2 control-label">Firstname</label>
-                                    <div class="col-sm-10">
-                                        <input type="text" name="firstname" class="form-control" id="inputfn3" placeholder="No Space" required="" value='<?php echo $firstname; ?>'>
+                                    <label>Firstname</label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-unchecked"></span></span>
+                                        <input type="text" name="firstname" class="form-control" placeholder="No Space" value="<?php echo $firstname;?>">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Lastname</label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-unchecked"></span></span>
+                                        <input type="text" name="lastname" class="form-control" placeholder="No Space" value="<?php echo $lastname;?>">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Email</label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon" id="basic-addon1"><span>@</span></span>
+                                        <input type="email" name="email" class="form-control" placeholder="me@example.com" value="<?php echo $email;?>">
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="inputfn3" class="col-sm-2 control-label">Lastname</label>
-                                    <div class="col-sm-10">
-                                        <input type="text" name="lastname" class="form-control" id="inputfn3" placeholder="No Space" required="" value='<?php echo $lastname; ?>'>
+                                    <label for="exampleInputEmail1">Username</label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-user"></span></span>
+                                        <input type="text" name="username" class="form-control" placeholder="Username" value="<?php echo $username;?>">
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
-                                    <div class="col-sm-10">
-                                        <input type="email" name="email" class="form-control" id="inputEmail3" placeholder="Email" required="" value='<?php echo $email; ?>'>
+                                    <label for="exampleInputEmail1">Password</label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-asterisk"></span></span>
+                                        <input type="password" name="password" class="form-control" placeholder="Password" value="<?php echo $password;?>">
                                     </div>
                                 </div>
-                                <div class="form-group">
-                                    <label for="inputfn3" class="col-sm-2 control-label">Username</label>
-                                    <div class="col-sm-10">
-                                        <input type="text" name="username" class="form-control" id="inputfn3" placeholder="Username" required="" value='<?php echo $username; ?>'>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="inputPassword3" class="col-sm-2 control-label">Password</label>
-                                    <div class="col-sm-10">
-                                        <input type="password" name="password" class="form-control" id="inputPassword3" placeholder="Password" required="" value='<?php echo $password; ?>'>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="col-sm-offset-2 col-sm-10">
-                                        <button type="submit" class="btn btn-primary">Sign Up</button>
-                                        <button type="button" class="btn btn-success" onclick="window.location = 'loginform'">Log In</button>
-                                    </div>
-                                </div>
-                            </form>                        </div>
-                    </div>
+
+                        </div>
+                        
+                                <button type="submit" class="btn btn-primary">Sign Up</button>
+<!--                                <button type="button" class="btn btn-success" onclick="window.location = 'loginform'">Log In</button>-->
+                        </form> 
+                        </div>
                 </div>
             </div>
-
         </div>
 
-
-        <!--
-            <div id ="body">
-        <?php
-        echo form_open('mainlogin/signup_valid');
-
-        echo validation_errors();
+    </div>
 
 
-        echo "<p>";
-        echo 'Firstname_' . form_input('firstname', $this->input->post('firstname'));
-        echo "</p>";
+    <!--
+        <div id ="body">
+    <?php
+    echo form_open('mainlogin/signup_valid');
 
-        echo "<p>";
-        echo 'Lastname__' . form_input('lastname', $this->input->post('lastname'));
-        echo "</p>";
-
-        echo "<p>";
-        echo 'Email_____' . form_input('email', $this->input->post('email'));
-        echo "</p>";
-
-        echo "<p>";
-        echo 'Username__' . form_input('username', $this->input->post('username'));
-        echo "</p>";
-
-        echo "<p>";
-        echo 'Password__' . form_password('password', $this->input->post('password'));
-        echo "</p>";
+    echo validation_errors();
 
 
-        echo "<p>";
-        echo form_submit('signup_submit', 'SIGN UP');
-        echo "</p>";
+    echo "<p>";
+    echo 'Firstname_' . form_input('firstname', $this->input->post('firstname'));
+    echo "</p>";
 
-        echo form_close();
-        // put your code here
-        ?>
-            </div>-->
-    </body>
+    echo "<p>";
+    echo 'Lastname__' . form_input('lastname', $this->input->post('lastname'));
+    echo "</p>";
+
+    echo "<p>";
+    echo 'Email_____' . form_input('email', $this->input->post('email'));
+    echo "</p>";
+
+    echo "<p>";
+    echo 'Username__' . form_input('username', $this->input->post('username'));
+    echo "</p>";
+
+    echo "<p>";
+    echo 'Password__' . form_password('password', $this->input->post('password'));
+    echo "</p>";
+
+
+    echo "<p>";
+    echo form_submit('signup_submit', 'SIGN UP');
+    echo "</p>";
+
+    echo form_close();
+    // put your code here
+    ?>
+        </div>-->
+</body>
 </html>

@@ -32,9 +32,12 @@ if ($cart = $this->cart->contents()) {
         </style>
     </head>
     <body>
+        
         <div id="bill_info">
 
-            <?php // Create form for enter user imformation and send values 'shopping/save_order' function   ?>
+            <?php // Create form for enter user imformation and send values 'shopping/save_order' function   
+            echo validation_errors();
+            ?>
             <div class ="container">
                 <div class="row">
                     <div class="col-md-4"></div>
@@ -55,31 +58,31 @@ if ($cart = $this->cart->contents()) {
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label for="exampleInputEmail1">Name</label>
+                                        
                                         <div class="input-group">
                                             <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-user"></span></span>
-                                            <input type="text" name="custname" class="form-control" placeholder="Name" required="">
+                                            <input type="text" name="custname" class="form-control" placeholder="Name"  required="">
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label for="exampleInputEmail1">Address</label>
+                                        
                                         <div class="input-group">
                                             <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-user"></span></span>
-                                            <input type="text" name="address" class="form-control" placeholder="Full Address" required="">
+                                            <input type="text" name="address" class="form-control" placeholder="Full Address" required="" >
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label for="exampleInputEmail1">Email</label>
+                                        
                                         <div class="input-group">
                                             <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-user"></span></span>
-                                            <input type="text" name="email" class="form-control" placeholder="E.g me@example.com" required="">
+                                            <input type="text" name="email" class="form-control" placeholder="E.g me@example.com" required="" >
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label for="exampleInputEmail1">Phone</label>
+                                        
                                         <div class="input-group">
                                             <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-user"></span></span>
-                                            <input type="text" name="phone" class="form-control" placeholder="E.g 748743734" required="">
+                                            <input type="text" name="phone" class="form-control" placeholder="E.g 748743734" required="" >
                                         </div>
                                     </div>
 

@@ -2,10 +2,11 @@
 
 class M_user extends CI_Model {
 
-public function get_all() {
+    public function get_all() {
         $query1 = $this->db->get('users');
         return $query1->result_array();
     }
+
     public function get_user() {
         return $result = $this->db->get('users');
     }
@@ -15,15 +16,18 @@ public function get_all() {
         return $this->db->get('users')->row(); /* users using () is table's name */
     }
 
-    public function proseslogin() {
-        $this->db->where('username', $this->input->post('username'));
-        $this->db->where('password', $this->input->post('password'));
-        $query = $this->db->get('users');
+    public function proseslogin($username, $password) {
+        $this->db->select('username', 'password');
+        $this->db->from('users');
+        $this->db->where('username', $username);
+        $this->db->where('password', $password);
+
+        $query = $this->db->get();
 
         if ($query->num_rows() == 1) {
-            return true;
+            return $query->result();
         } else {
-            return false;
+            return FALSE;
         }
     }
 
@@ -44,25 +48,25 @@ public function get_all() {
         }
     }
 
-    public function profile($username = null) {
-        if ($this->session->userdata('username')) {
-            $username = $this->session->userdata('username');
-            $query = $this->db->get('users');
-//          $userquery = $this->db->select('username');
-            $userquery = $this->db->select("SELECT username FROM users where users.username = '$username'");
-            if ($userquey->num_rows() > 1) {
-                return $userquery->result();
-            }
-        }
-//      
-//      
-//        if ($username == null) {
+//    public function displayup($username=null) {
+//
+//        if($username == null ){
 //            $query = $this->db->get('users');
-//        } else {
-//            $query = $this->db->get_where('users', ['username' => $username]);
 //        }
-//        return $query->result();
+//        else {
+//            $query = $this->db->get_where('username', ['username'=>$username]);
+//        }
+//        return $query -> result();
 //    }
+
+
+    public function get($username = null) {
+        if ($username == null) {
+            $query = $this->db->get('users');
+        } else {
+            $query = $this->db->get_where('users', ['username' => $username]);
+        }
+        return $query->result();
     }
 
     // public function delete($id=FALSE, $role=1){
@@ -70,9 +74,4 @@ public function get_all() {
     //$this->db->where('role',$role);
     //  $this->db->delete('user');
 //}
-
-
-
-    
-
 }
