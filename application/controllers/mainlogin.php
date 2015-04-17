@@ -128,7 +128,7 @@ public function signupy(){
     public function userlogout() {
         $this->session->unset_userdata('logged_in');
         session_destroy();
-        redirect('loginform', 'refresh');
+        redirect('mainlogin/halamanutama', 'refresh');
     }
 
     public function signup() {
@@ -161,7 +161,7 @@ public function signupy(){
         $this->load->library('form_validation');
         $this->form_validation->set_rules('firstname', 'Firstname', 'required|callback_alpha_rules');
         $this->form_validation->set_rules('lastname', 'Lastname', 'required|callback_alpha_rules');
-        $this->form_validation->set_rules('username', 'Username', 'required|max_length[10]|callback_valid_id');
+        $this->form_validation->set_rules('username', 'Username', 'required');
         $this->form_validation->set_rules('password', 'Password', 'required|min_length[6]|max_length[20]|callback_verifiedlogin');
         $this->form_validation->set_rules('email', 'Email', 'required|valid_email');
 
