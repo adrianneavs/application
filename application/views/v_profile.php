@@ -81,14 +81,14 @@ and open the template in the editor.
                                                     <?php echo form_error('username', '<span id="helpBlock" class="help-block">', '</span>'); ?>
                                                     <div class ="input-group">
                                                         <div class ="input-group-addon"> <span class ="glyphicon glyphicon-user"> </span> </div>
-                                                        <input type = "text" name = "username" class ='form-control' disabled='true' value ='<?php echo $rows->username; ?>'/>
+                                                        <input type = "text" name = "username" class ='form-control' value ='<?php echo $rows->username; ?>'/>
                                                     </div>
                                                 </div></br>
                                                 <div class='form-group <?php echo form_error('password') !== "" ? 'has-error' : ''; ?>'>
                                                     <label for='password'>Password:</label>
                                                     <?php echo form_error('password', '<span id="helpBlock" class="help-block">', '</span>'); ?>
                                                     <div class ="input-group">
-                                                        <div class ="input-group-addon"> <span class ="glyphicon glyphicon-lock"> </span> </div>
+                                                        <div class ="input-group-addon"> <span class ="glyphicon glyphicon-arterisk"> </span> </div>
                                                         <input type = "password" name = "password" class ='form-control' value ='<?php echo $rows->password; ?>'/>
                                                     </div>
                                                 </div></br>
