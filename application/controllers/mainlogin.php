@@ -340,8 +340,7 @@
             public function save_order() {
                 if ($this->session->userdata('logged_in')) {
                     $session_data = $this->session->userdata('logged_in');
-                    $data['username'] = $session_data['username'];
-
+                    
                     $this->load->library('form_validation');
                     $this->form_validation->set_rules('custname', 'Name', 'required|alpha|trim');
                     $this->form_validation->set_rules('address', 'Address', 'required|trim');
@@ -386,7 +385,7 @@
 
                         // After storing all imformation in database load "billing_success".
                         $this->load->view('v_success', array('orderid' => $ord_id)); //pass order id to view
-                        $this->load->view('v_success', $data); //pass order id to view
+                        
                     }
                 }
             }
