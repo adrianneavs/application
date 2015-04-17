@@ -67,7 +67,9 @@ class Mainlogin extends CI_Controller {
     public function getusername() {
         
     }
-
+public function signupy(){
+    $this->load->view('v_signupy');
+}
     public function signup_valid() {
         $this->load->library('form_validation');
         $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email|is_unique[users.email]');
@@ -79,14 +81,10 @@ class Mainlogin extends CI_Controller {
 //            $this->form_validation->set_rules('phone', 'Phone', 'required|numeric');
 
         if ($this->form_validation->run()) {
+            $this->load->view('v_signupy');
             ?>
-            <div class="signup">
-                <div class ="col-md-4"></div>
-                <div class ="col-md-4">
-                    <div class="alert alert-success" role="alert">Succeed! Thanks for signing up</div>
-                    <p>now <a href = '<?php echo base_url() . "mainlogin/loginform"; ?>'>Login</a>
-                </div>
-                <div class ="col-md-4"></div></div>
+            
+                
             <?php
             $data = array(
                 'firstname' => $this->input->post('firstname'),

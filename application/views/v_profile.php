@@ -23,12 +23,22 @@ and open the template in the editor.
 
             }
         </script>
+        <style>
+            .jumbotron{
+                background-color:#ffb347;
+                color:white;
+            }
+            h1 {
+                color:white;
+            }
+
+        </style>
         <meta charset="UTF-8">
         <title></title>
     </head>
     <body>
         <div class='jumbotron'>
-            <center><h1>Form Update</h1></center>
+            <center><h1>Profile Update</h1></center>
         </div>
         <br><br>
         <div class ='container'>
@@ -37,7 +47,7 @@ and open the template in the editor.
                     <div class ="col-lg-6 col-lg-offset-3">
                         <form action ='<?php echo base_url() . 'mainlogin/updateprofile/' . $this->uri->segment(3); ?>' method='post'>
                             <div class="panel panel-default">
-                                <div class="panel-heading"><h3>Edit Data: </h3></div>
+                                <div class="panel-heading"><h3>Edit Profile: </h3></div>
                                 <div class="panel-body">
                                     <?php
                                     $id = $this->uri->segment(3);
