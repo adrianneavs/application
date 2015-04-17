@@ -31,7 +31,9 @@ and open the template in the editor.
             h1 {
                 color:white;
             }
-
+            .panelheading{
+                background-color: #fdfd96;
+            }
         </style>
         <meta charset="UTF-8">
         <title></title>
@@ -101,7 +103,7 @@ and open the template in the editor.
                                             }
                                             ?>  
 
-                                            <input type ="submit" class ='btn btn-primary' name = "submit" value="Edit"/>
+                                            <input type ="submit" class ='btn btn-warning' name = "submit" value="OK"/>
                                     </table>
                                     <a href ="<?php echo base_url() . 'mainlogin/index' ?>"> Back </a>
                                 </div>
