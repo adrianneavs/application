@@ -90,9 +90,11 @@
         </table>
         <div class="col-md-4"></div>
         <div class="col-md-4">
-            <input type="button" name="checkout" class="btn btn-primary" value="Checkout" onclick="window.location = 'checkout'">
+            <?php echo form_open('mainlogin/checkout');?>
+            <input type="button" name="checkout" class="btn btn-primary" value="Checkout">
 
             </input>
+            <?php echo form_close();?>
         </div>
         <div class="col-md-4"></div>
 
