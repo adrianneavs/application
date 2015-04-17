@@ -162,7 +162,7 @@ class Mainlogin extends CI_Controller {
 
     public function updateprofile() {
         if ($this->session->userdata('logged_in')) {
-            $id = $this->uri->segment(3);
+            $username = $this->uri->segment(3);
 
             $this->load->library('form_validation');
             $this->form_validation->set_rules('firstname', 'Firstname', 'required|callback_alpha_rules');
@@ -173,6 +173,7 @@ class Mainlogin extends CI_Controller {
 
             if ($this->form_validation->run() == FALSE) {
                 $this->profile();
+                
             } else {
 
                 $data = array(
