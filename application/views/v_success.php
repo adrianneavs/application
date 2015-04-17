@@ -26,6 +26,7 @@
         <div class="jumbotron">
             <h2 align="center">Order History</h2>
         </div>
+            <div class="alert alert-success" role="alert">Your order has been placed</div><br>
         <table class="table table-bordered" border="4" cellpadding="5px" cellspacing="1px">
 
             <tr id= "main_heading">
@@ -92,7 +93,7 @@
         <div class="col-md-4">
             
             <form class="form-horizontal" action="<?php echo base_url() . "mainlogin/checkout"; ?>">
-                <input type="submit" name="checkout" class="btn btn-primary" value="Checkout">
+                <input type="submit" name="checkout" class="btn btn-primary" value="Home">
 
                 </input>
             </form>
