@@ -60,11 +60,11 @@ class M_user extends CI_Model {
 //    }
 
 
-    public function get($id = null) {
-        if ($id == null) {
+    public function get($username = null) {
+        if ($username == null) {
             $query = $this->db->get('users');
         } else {
-            $query = $this->db->get_where('users', ['id' => $id]);
+            $query = $this->db->get_where('users', ['username' => $username]);
         }
         return $query->result();
     }

@@ -53,7 +53,7 @@ and open the template in the editor.
                                 <div class="panel-body">
                                     <?php
                                     $id = $this->uri->segment(3);
-                                    $this->db->where('id', $id);
+                                    $this->db->where('username', $username);
                                     $this->db->from('users');
 
                                     $query = $this->db->get();

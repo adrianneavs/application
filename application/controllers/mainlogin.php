@@ -176,7 +176,7 @@ public function signupy(){
                 'password' => $this->input->post('password'),
                 'email' => $this->input->post('email'),
             );
-            $this->db->where('id', $id);
+            $this->db->where('username', $username);
             $this->db->update('users', $data);
             redirect('mainlogin/updated');
         }

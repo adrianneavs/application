@@ -93,7 +93,7 @@
 
             <div class="col-md-4">
                 <h3>Welcome <strong><?php echo" " . $username . "!"; ?> </strong></h3>
-                <span class="glyphicon glyphicon-wrench"><a href ='<?php echo base_url() . "mainlogin/profile/" . $id ?>'>EDIT PROFILE</a></span>
+                <span class="glyphicon glyphicon-wrench"><a href ='<?php echo base_url() . "mainlogin/profile/" . $username ?>'>EDIT PROFILE</a></span>
                 <span class="glyphicon glyphicon-off"><a href ='<?php echo base_url() . "mainlogin/userlogout" ?>'>LOGOUT</a></span>
             </div>
             <?php
