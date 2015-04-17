@@ -124,7 +124,7 @@ class Mainlogin extends CI_Controller {
             }
             return TRUE;
         } else {
-            $this->form_validation->set_message('validate_credentials', 'Invalid username or password');
+            $this->form_validation->set_message('check_database', 'Invalid username or password');
             return FALSE;
         }
     }
