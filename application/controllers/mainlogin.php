@@ -156,7 +156,7 @@ public function signupy(){
 
     public function updateprofile() {
 
-        $id = $this->uri->segment(3);
+        $username = $this->uri->segment(3);
 
         $this->load->library('form_validation');
         $this->form_validation->set_rules('firstname', 'Firstname', 'required|callback_alpha_rules');
