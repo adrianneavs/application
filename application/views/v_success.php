@@ -91,7 +91,7 @@
         <div class="col-md-4"></div>
         <div class="col-md-4">
             
-            <form class="form-horizontal" action="<?php echo base_url() . "mainlogin/checkout"; ?>" method="post">
+            <form class="form-horizontal" action="<?php echo base_url() . "mainlogin/checkout"; ?>">
                 <input type="button" name="checkout" class="btn btn-primary" value="Checkout">
 
                 </input>
