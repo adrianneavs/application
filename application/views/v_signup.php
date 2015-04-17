@@ -85,7 +85,7 @@ and open the template in the editor.
                         </div>
                         
                                 <button type="submit" class="btn btn-primary">Sign Up</button>
-<!--                                <button type="button" class="btn btn-success" onclick="window.location = 'loginform'">Log In</button>-->
+                                <a href ='<?php echo base_url() . "mainlogin/loginform" ?>'>Log In</a>
                         </form> 
                         </div>
                 </div>

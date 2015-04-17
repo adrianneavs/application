@@ -91,7 +91,7 @@ and open the template in the editor.
                                             }
                                             ?>  
 
-                                            <input type ="submit" class ='btn btn-default btn-lg' name = "submit" value="Update"/>
+                                            <input type ="submit" class ='btn btn-primary' name = "submit" value="Edit"/>
                                     </table>
                                     <a href ="<?php echo base_url() . 'mainlogin/index' ?>"> Back </a>
                                 </div>
