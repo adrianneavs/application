@@ -166,7 +166,7 @@ public function signupy(){
         $this->form_validation->set_rules('email', 'Email', 'required|valid_email');
 
         if ($this->form_validation->run() == FALSE) {
-            $this->updateform();
+            $this->profile();
         } else {
 
             $data = array(
