@@ -49,7 +49,7 @@ and open the template in the editor.
                     <div class ="col-lg-6 col-lg-offset-3">
                         <form action ='<?php echo base_url() . 'mainlogin/updateprofile/' . $this->uri->segment(3); ?>' method='post'>
                             <div class="panel panel-default">
-                                <div class="panel-heading"><h3>Edit Profile: </h3></div>
+                                <div class='panel-heading'><h3>Edit Profile: </h3></div>
                                 <div class="panel-body">
                                     <?php
                                     $id = $this->uri->segment(3);
@@ -81,7 +81,7 @@ and open the template in the editor.
                                                     <?php echo form_error('username', '<span id="helpBlock" class="help-block">', '</span>'); ?>
                                                     <div class ="input-group">
                                                         <div class ="input-group-addon"> <span class ="glyphicon glyphicon-user"> </span> </div>
-                                                        <input type = "text" name = "username" class ='form-control' disbaled='true' value ='<?php echo $rows->username; ?>'/>
+                                                        <input type = "text" name = "username" class ='form-control' disabled='true' value ='<?php echo $rows->username; ?>'/>
                                                     </div>
                                                 </div></br>
                                                 <div class='form-group <?php echo form_error('password') !== "" ? 'has-error' : ''; ?>'>
