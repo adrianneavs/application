@@ -52,7 +52,7 @@ and open the template in the editor.
                                 <div class='panel-heading'><h3>Edit Profile: </h3></div>
                                 <div class="panel-body">
                                     <?php
-                                    $username = $this->uri->segment(3);
+                                    $id = $this->uri->segment(3);
                                     $this->db->where('username', $username);
                                     $this->db->from('users');
 
