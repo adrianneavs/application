@@ -1,4 +1,5 @@
 <?php
+
 if (!defined('BASEPATH'))
     exit('No direct script access allowed');
 
@@ -67,9 +68,11 @@ class Mainlogin extends CI_Controller {
     public function getusername() {
         
     }
-public function signupy(){
-    $this->load->view('v_signupy');
-}
+
+    public function signupy() {
+        $this->load->view('v_signupy');
+    }
+
     public function signup_valid() {
         $this->load->library('form_validation');
         $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email|is_unique[users.email]');
@@ -83,9 +86,10 @@ public function signupy(){
         if ($this->form_validation->run()) {
             $this->load->view('v_signupy');
             ?>
-            
-                
+
+
             <?php
+
             $data = array(
                 'firstname' => $this->input->post('firstname'),
                 'lastname' => $this->input->post('lastname'),
@@ -151,34 +155,39 @@ public function signupy(){
             $users = $this->m_user->get();
 
             $this->load->view('v_profile', $data);
+        } else {
+            redirect('mainlogin/restricted');
         }
     }
 
     public function updateprofile() {
+        if ($this->session->userdata('logged_in')) {
+            $id = $this->uri->segment(3);
 
-        $id = $this->uri->segment(3);
+            $this->load->library('form_validation');
+            $this->form_validation->set_rules('firstname', 'Firstname', 'required|callback_alpha_rules');
+            $this->form_validation->set_rules('lastname', 'Lastname', 'required|callback_alpha_rules');
+            $this->form_validation->set_rules('username', 'Username', 'required|trim');
+            $this->form_validation->set_rules('password', 'Password', 'required|min_length[6]|max_length[20]|callback_verifiedlogin');
+            $this->form_validation->set_rules('email', 'Email', 'required|valid_email');
 
-        $this->load->library('form_validation');
-        $this->form_validation->set_rules('firstname', 'Firstname', 'required|callback_alpha_rules');
-        $this->form_validation->set_rules('lastname', 'Lastname', 'required|callback_alpha_rules');
-        $this->form_validation->set_rules('username', 'Username', 'required|trim');
-        $this->form_validation->set_rules('password', 'Password', 'required|min_length[6]|max_length[20]|callback_verifiedlogin');
-        $this->form_validation->set_rules('email', 'Email', 'required|valid_email');
+            if ($this->form_validation->run() == FALSE) {
+                $this->profile();
+            } else {
 
-        if ($this->form_validation->run() == FALSE) {
-            $this->profile();
+                $data = array(
+                    'firstname' => $this->input->post('firstname'),
+                    'lastname' => $this->input->post('lastname'),
+                    'username' => $this->input->post('username'),
+                    'password' => $this->input->post('password'),
+                    'email' => $this->input->post('email'),
+                );
+                $this->db->where('username', $username);
+                $this->db->update('users', $data);
+                redirect('mainlogin/updated');
+            }
         } else {
-
-            $data = array(
-                'firstname' => $this->input->post('firstname'),
-                'lastname' => $this->input->post('lastname'),
-                'username' => $this->input->post('username'),
-                'password' => $this->input->post('password'),
-                'email' => $this->input->post('email'),
-            );
-            $this->db->where('username', $username);
-            $this->db->update('users', $data);
-            redirect('mainlogin/updated');
+            redirect('mainlogin/restricted');
         }
     }
 
@@ -349,47 +358,52 @@ public function signupy(){
 ////            $this->form_validation->set_rules('phone', 'Phone', 'required|numeric');
 //
 //            if ($this->form_validation->run()) {
-
 // This will store all values which inserted  from user.
-                $customer = array(
-                    'name' => $this->input->post('custname'),
-                    'email' => $this->input->post('email'),
-                    'address' => $this->input->post('address'),
-                    'phone' => $this->input->post('phone')
-                );
-                // And store user imformation in database.
-                $cust_id = $this->m_billing->insert_customer($customer);
+            $customer = array(
+                'name' => $this->input->post('custname'),
+                'email' => $this->input->post('email'),
+                'address' => $this->input->post('address'),
+                'phone' => $this->input->post('phone')
+            );
+            // And store user imformation in database.
+            $cust_id = $this->m_billing->insert_customer($customer);
 
-                $order = array(
-                    'date' => date('Y-m-d'),
-                    'customerid' => $cust_id
-                );
+            $order = array(
+                'date' => date('Y-m-d'),
+                'customerid' => $cust_id
+            );
 
-                $ord_id = $this->m_billing->insert_order($order);
+            $ord_id = $this->m_billing->insert_order($order);
 
-                if ($cart = $this->cart->contents()):
-                    foreach ($cart as $item):
-                        $order_detail = array(
-                            'orderid' => $ord_id,
-                            'productid' => $item['id'],
-                            'quantity' => $item['qty'],
-                            'price' => $item['price']
-                        );
+            if ($cart = $this->cart->contents()):
+                foreach ($cart as $item):
+                    $order_detail = array(
+                        'orderid' => $ord_id,
+                        'productid' => $item['id'],
+                        'quantity' => $item['qty'],
+                        'price' => $item['price']
+                    );
 
-                        // Insert product imformation with order detail, store in cart also store in database. 
+                    // Insert product imformation with order detail, store in cart also store in database. 
 
-                        $cust_id = $this->m_billing->insert_order_detail($order_detail);
-                    endforeach;
-                endif;
+                    $cust_id = $this->m_billing->insert_order_detail($order_detail);
+                endforeach;
+            endif;
 
-                // After storing all imformation in database load "billing_success".
-                $this->load->view('v_success', array('orderid' => $ord_id)); //pass order id to view
-            }
+            // After storing all imformation in database load "billing_success".
+            $this->load->view('v_success', array('orderid' => $ord_id)); //pass order id to view
         }
-    
+        else {
+            redirect('mainlogin/restricted');
+        }
+    }
 
     public function checkout() {
-        $this->load->view('v_checkout');
+        if ($this->session->userdata('logged_in')) {
+            $this->load->view('v_checkout');
+        } else {
+            redirect('mainlogin/restricted');
+        }
     }
 
 }
