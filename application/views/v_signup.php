@@ -48,7 +48,7 @@ and open the template in the editor.
                                     <label>Firstname</label>
                                     <div class="input-group">
                                         <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-unchecked"></span></span>
-                                        <input type="text" name="firstname" class="form-control" placeholder="No Space" value="<?php echo $firstname;?>">
+                                        <input type="text" name="firstname" class="form-control" placeholder="No Space" value="<?php echo $firstname; ?>">
                                     </div>
                                 </div>
 
@@ -56,7 +56,7 @@ and open the template in the editor.
                                     <label for="exampleInputEmail1">Lastname</label>
                                     <div class="input-group">
                                         <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-unchecked"></span></span>
-                                        <input type="text" name="lastname" class="form-control" placeholder="No Space" value="<?php echo $lastname;?>">
+                                        <input type="text" name="lastname" class="form-control" placeholder="No Space" value="<?php echo $lastname; ?>">
                                     </div>
                                 </div>
 
@@ -64,30 +64,30 @@ and open the template in the editor.
                                     <label for="exampleInputEmail1">Email</label>
                                     <div class="input-group">
                                         <span class="input-group-addon" id="basic-addon1"><span>@</span></span>
-                                        <input type="email" name="email" class="form-control" placeholder="me@example.com" value="<?php echo $email;?>">
+                                        <input type="email" name="email" class="form-control" placeholder="me@example.com" value="<?php echo $email; ?>">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Username</label>
                                     <div class="input-group">
                                         <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-user"></span></span>
-                                        <input type="text" name="username" class="form-control" placeholder="Username" value="<?php echo $username;?>">
+                                        <input type="text" name="username" class="form-control" placeholder="Username" value="<?php echo $username; ?>">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Password</label>
                                     <div class="input-group">
                                         <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-asterisk"></span></span>
-                                        <input type="password" name="password" class="form-control" placeholder="min 6 characters" value="<?php echo $password;?>">
+                                        <input type="password" name="password" class="form-control" placeholder="min 6 characters" value="<?php echo $password; ?>">
                                     </div>
                                 </div>
 
                         </div>
-                        
-                                <button type="submit" class="btn btn-primary">Sign Up</button>
-                                <a href ='<?php echo base_url() . "mainlogin/loginform" ?>'>Log In</a>
-                        </form> 
-                        </div>
+
+                        <button type="submit" class="btn btn-primary">Sign Up</button>
+                        <p>Have account? <a href="<?php echo base_url() . "mainlogin/loginform"; ?>">Log In</a>
+                            </form> 
+                    </div>
                 </div>
             </div>
         </div>
